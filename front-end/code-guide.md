@@ -1,24 +1,25 @@
 # 代码规范
 
 **代码规范的初衷是为了统一团队成员代码风格，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。**
-**下面的规范如有觉得不合理或有更好的建议请联系田益铭**
+
+    **下面的规范如有觉得不合理或有更好的建议请联系田益铭**
 
 现有规范:
 
 1. [ES6](https://github.com/airbnb/javascript)
 2. [Vue 风格指南](https://cn.vuejs.org/v2/style-guide/)
 
-#### ***这里基于上面已有规范做一些特殊说明、修改、强调和归纳，着重于 Javascript***
+***这里基于上面已有规范做一些特殊说明、修改、强调和归纳，着重于 Javascript***
 
 ------
 
 #### 1. 命名规范
 
-- 文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，尽量不包含空格和特殊符号；
+- 项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号，比如：`my-project-name`
 - CSS 文件命名: `suffix.css(.scss)`, 共用 `global.css`, 首页 `index.css`, 其他依实际模块需求命名；
 - JS 文件命名: `suffix.js`, 共用 `common.js`, 其他依实际模块需求命名；
+- 有复数结构时，要采用复数命名法，比如说： scripts, styles, images, data-models
 - 以字母开头命名
-- 每行代码不超过 120 个字符
 - 常用模块命名见文末
 
 #### 2. 基本原则
@@ -44,14 +45,21 @@ Vue 项目：
 
 > 统一两个空格缩进（anyway: 不要使用 `Tab` 或者 `Tab`、空格混搭)。
 
-#### 4. 注释
+#### 4. [注释](https://github.com/airbnb/javascript#comments)
 
 - 单行注释
 
-  必须独占一行。*<!--<div class="sell"></div>-->*  缩进与下一行被注释说明的代码一致。
+  缩进与下一行被注释说明的代码一致
+  - HTML
 
+    `<!--<div class="sell"></div>-->`
+
+  - JS
+  使用 `//`，且必**须独占一行**。
+
+    `// is current tab`
 - 多行注释
-
+  - HTML
   ```html
   <!-- <div class="sell">
     <p>多行注释</p>
@@ -59,6 +67,7 @@ Vue 项目：
     <p>多行注释</p>
   </div> -->
   ```
+  - JS 使用 `/** ... */` 或 `//` 均可
 
 - 函数注释
 
@@ -72,6 +81,8 @@ Vue 项目：
    * @return {Object} 返回值描述
    */
   ```
+
+- 善用 `FIXME： ` 和 `TODO: `
 
 #### 5. 标点符号
 
@@ -160,7 +171,10 @@ function getTitle() {
     }
   ```
 
-#### [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
+  2. 每行代码不超过 120 个字符
+  3. 逻辑块之间加空行增加可读性
+
+#### 9. [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
   ```javascript
   // bad
   if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
@@ -212,13 +226,14 @@ function getTitle() {
 
 #### 9. 常量
 
-**命名方法** : 全部大写
-**命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词。
+- **命名方法** : 全部大写
+- **命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词。
 
 ```javascript
 const MAX_COUNT = 10;
 const URL = 'https://www.google.com';
 ```
+- Android、iOS
 
 #### 10. 括号
 
@@ -318,11 +333,6 @@ if (typeof person === 'undefined') {
 
  2. 操作符两端添加空格
 
-#### 14. 文件编码
-
-- 在 HTML中指定编码 `<meta charset="utf-8">`
-- 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
-
 #### 15. HTML
 
   1. HTML 属性值使用双引号
@@ -331,20 +341,26 @@ if (typeof person === 'undefined') {
   4. 尽量减少标签数量
   5. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式;
   6. HTML 属性应该按照特定的顺序出现以保证易读
-    1. id
-    2. class
-    3. name
-    4. data-xxx
-    5. src, for, type, href
-    6. title, alt
-    7. aria-xxx, role
+        1. id
+        2. class
+        3. name
+        4. data-*
+        5. src, for, type, href, value, max-length, max, min, pattern
+        6. placeholder, title, alt
+        7. aria-*, role
+        8. required, readonly, disabled
+  7. 字符编码 `<meta charset="utf-8">`
+  8. 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
+  9. IE 兼容模式 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
+  10. 响应式 `<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">`
 
 #### 16. CSS
 
- 1. class 应以功能或内容命名，不以表现形式命名
- 2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
- 3. 省略 "0" 值后面的单位。不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
- 4. 代码缩进与格式: 每个 CSS 属性声明后都要使用一个分号，在紧跟属性名的冒号后使用一个空格
+  1. class 应以功能或内容命名，不以表现形式命名
+  2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
+  3. 省略 "0" 值后面的单位。不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
+  4. 代码缩进与格式: 每个 CSS 属性声明后都要使用一个分号，在紧跟属性名的冒号后使用一个空格
+  5. 减少选择器的长度（深度）
 
 #### 17. Vue 组件命名 和 文件夹结构
 
@@ -380,98 +396,78 @@ if (typeof person === 'undefined') {
 
 #### PS
 
-1. 文件最后保留一个空行
-
-2. 行尾不要有空白字符
-
-3. 不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可
-
-4. 简单的 `if {} else {}` 应用三元表达式来代替
-
-5. 换行符统一用 'LF'
-
-6. 不要混用 tab 和 space
-
-7. 书写代码前, 考虑并提高样式重复使用率
-
-8. 省略外链资源 URL 协议部分: 省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免Mixed Content 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略。
+  1. 文件最后保留一个空行
+  2. 行尾不要有空白字符
+  3. 不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可
+  4. 简单的 `if {} else {}` 应用三元表达式来代替
+  5. 换行符统一用 'LF'
+  6. 不要混用 tab 和 space
+  7. 书写代码前, 考虑并提高样式重复使用率
+  8. 书写链接地址时, 必须避免重定向，例如：`href="https://www.qq.com/"`, 即须在URL地址后面加上`/`
+  9. 不要用隐含的类型转换
+  10. 用 parseInt() 进行数字转换
+  11. 构造器首字母大写
+  12. 尽量不要用位运算、`continue` 语句
+  13. 省略外链资源 URL 协议部分: 省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免Mixed Content 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略。
 
    ```html
    <!-- Recommended -->
    <script src="//www.w3cschool.cn/statics/js/autotrack.js"></script>
+
    <!-- Not recommended -->
    <script src="http://www.w3cschool.cn/statics/js/autotrack.js"></script>
    ```
 
-9. 书写链接地址时, 必须避免重定向，例如：`href="https://www.qq.com/"`, 即须在URL地址后面加上`/`；
+  14. 函数参数不要使用 `arguments`，选择 Rest 使用 `...` 代替
 
- 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
+  ```javascript
+  // bad
+  function concatenateAll() {
+    const args = Array.prototype.slice.call(arguments);
+    return args.join('');
+  }
+
+  // good
+  function concatenateAll(...args) {
+    return args.join('');
+  }
+  ```
+
+  15. 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
+
 #### 常用模块命名
 
 - 头：header
-
 - 内容：content/container
-
 - 尾：footer
-
 - 导航：nav
-
 - 侧栏：sidebar
-
 - 栏目：column
-
 - 页面外围控制整体布局宽度：wrapper
-
 - 左右中：left right center
-
 - 登录条：loginbar
-
 - 标志：logo
-
 - 广告：banner
-
 - 页面主体：main
-
 - 热点：hot
-
 - 新闻：news
-
 - 下载：download
-
 - 子导航：subnav菜单：menu子菜单：submenu
-
 - 搜索：search
-
 - 友情链接：friendlink
-
 - 页脚：footer
-
 - 版权：copyright
-
 - 滚动：scroll
-
 - 内容：content
-
 - 标签页：tab
-
 - 文章列表：list
-
 - 提示信息：msg
-
 - 小技巧：tips
-
 - 栏目标题：title
-
 - 加入：joinus
-
 - 指南：guild
-
 - 服务：service
-
 - 注册：regsiter
-
 - 状态：status
-
 - 投票：vote
-
 - 合作伙伴：partner
