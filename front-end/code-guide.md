@@ -2,7 +2,7 @@
 
 **代码规范的初衷是为了统一团队成员代码风格，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。**
 
-    **下面的规范如有觉得不合理或有更好的建议请联系田益铭**
+**下面的规范如有觉得不合理或有更好的建议请联系田益铭**
 
 现有规范:
 
@@ -16,8 +16,8 @@
 #### 1. 命名规范
 
 - 项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号，比如：`my-project-name`
-- CSS 文件命名: `suffix.css(.scss)`, 共用 `global.css`, 首页 `index.css`, 其他依实际模块需求命名；
-- JS 文件命名: `suffix.js`, 共用 `common.js`, 其他依实际模块需求命名；
+- CSS 文件命名: `suffix.css(.scss)`, 共用 `global.css`, 首页 `index.css`, 其他依实际模块需求命名
+- JS 文件命名: `suffix.js`, 共用 `common.js`, 其他依实际模块需求命名
 - 有复数结构时，要采用复数命名法，比如说： scripts, styles, images, data-models
 - 以字母开头命名
 - 常用模块命名见文末
@@ -27,8 +27,8 @@
 **结构、样式、行为分离**
 
 > 尽量确保文档和模板只包含 HTML 结构，样式都放到样式表里，行为都放到脚本里。
-
-基于模块开发：始终基于模块的方式来构建你的 app，每一个子模块只做一件事情。
+>
+> 基于模块开发：始终基于模块的方式来构建你的 app，每一个子模块只做一件事情。
 
 Vue 项目：
 统一采用下面的形式
@@ -77,12 +77,12 @@ Vue 项目：
    *
    * @param {string} p1 参数1的说明
    * @param {string} p2 参数2的说明
-   * @param {number=} p3 参数3的说明（可选）
+   * @param {number=} p3 参数3的说明
    * @return {Object} 返回值描述
    */
   ```
 
-- 善用 `FIXME： ` 和 `TODO: `
+- 善用 `FIXME:` 和 `TODO:`
 
 #### 5. 标点符号
 
@@ -174,6 +174,32 @@ function getTitle() {
   2. 每行代码不超过 120 个字符
   3. 逻辑块之间加空行增加可读性
 
+#### 13. 留空
+
+ 1. 使用留空应该遵循英语阅读惯例。
+
+    1. 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格。
+    2. 另外，大括号应该总是和他们前面的参数出现在同一行。
+
+    ```javascript
+    // bad
+    for ( let i = 0, j = arr.length; i < j; i++ )
+    {
+      // Do something.
+    }
+
+    for(let i=0,j=arr.length;i<j;i++){
+      // Do something.
+    }
+
+    // good
+    for (let i = 0, j = arr.length; i < j; i++) {
+      // Do something.
+    }
+    ```
+
+ 2. 操作符两端添加空格
+
 #### 9. [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
   ```javascript
   // bad
@@ -233,6 +259,7 @@ function getTitle() {
 const MAX_COUNT = 10;
 const URL = 'https://www.google.com';
 ```
+
 - Android、iOS
 
 #### 10. 括号
@@ -271,6 +298,41 @@ if (typeof person === 'undefined') {
 }
 ```
 
+#### 11. [解构赋值](https://github.com/airbnb/javascript#destructuring)
+
+  ```javascript
+  // good
+  const { data } = this;
+
+  // bad
+  function getFullName(user) {
+    const firstName = user.firstName;
+    const lastName = user.lastName;
+
+    return `${firstName} ${lastName}`;
+  }
+
+  // good
+  function getFullName(user) {
+    const { firstName, lastName } = user;
+    return `${firstName} ${lastName}`;
+  }
+
+  // best
+  function getFullName({ firstName, lastName }) {
+    return `${firstName} ${lastName}`;
+  }
+
+  const arr = [1, 2, 3, 4];
+
+  // bad
+  const first = arr[0];
+  const second = arr[1];
+
+  // good
+  const [first, second] = arr;
+  ```
+
 #### 11. 组件中的 HTML 格式
 
   组件元素有多个属性时闭合标志应单独占一行
@@ -306,32 +368,6 @@ if (typeof person === 'undefined') {
 #### 12. 引入 CSS 和 JavaScript 文件
 
 ​   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值。
-
-#### 13. 留空
-
- 1. 使用留空应该遵循英语阅读惯例。
-
-    1. 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格。
-    2. 另外，大括号应该总是和他们前面的参数出现在同一行。
-
-    ```javascript
-    // bad
-    for ( let i = 0, j = arr.length; i < j; i++ )
-    {
-      // Do something.
-    }
-
-    for(let i=0,j=arr.length;i<j;i++){
-      // Do something.
-    }
-
-    // good
-    for (let i = 0, j = arr.length; i < j; i++) {
-      // Do something.
-    }
-    ```
-
- 2. 操作符两端添加空格
 
 #### 15. HTML
 
