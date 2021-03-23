@@ -2,3 +2,476 @@
 
 **代码规范的初衷是为了统一团队成员代码风格，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。**
 **下面的规范如有觉得不合理或有更好的建议请联系田益铭**
+
+现有规范:
+
+1. [ES6](https://github.com/airbnb/javascript)
+2. [Vue 风格指南](https://cn.vuejs.org/v2/style-guide/)
+
+#### ***这里基于上面已有规范做一些特殊说明、修改、强调和归纳，着重于 Javascript***
+
+------
+
+#### 1. 命名规范
+
+- 文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，尽量不包含空格和特殊符号；
+- CSS 文件命名: `suffix.css(.scss)`, 共用 `global.css`, 首页 `index.css`, 其他依实际模块需求命名；
+- JS 文件命名: `suffix.js`, 共用 `common.js`, 其他依实际模块需求命名；
+- 以字母开头命名
+- 每行代码不超过 120 个字符
+- 常用模块命名见文末
+
+#### 2. 基本原则
+
+**结构、样式、行为分离**
+
+> 尽量确保文档和模板只包含 HTML 结构，样式都放到样式表里，行为都放到脚本里。
+
+基于模块开发：始终基于模块的方式来构建你的 app，每一个子模块只做一件事情。
+
+Vue 项目：
+统一采用下面的形式
+
+（只有较特殊且针对单个组件的样式才应该放在组件里，其余的样式应该合理地放到 `styles` 文件夹里）
+
+```html
+<template>...</template>
+<script>/* ... */</script>
+<style>/* ... */</style>
+```
+
+#### 3. 缩进
+
+> 统一两个空格缩进（anyway: 不要使用 `Tab` 或者 `Tab`、空格混搭)。
+
+#### 4. 注释
+
+- 单行注释
+
+  必须独占一行。*<!--<div class="sell"></div>-->*  缩进与下一行被注释说明的代码一致。
+
+- 多行注释
+
+  ```html
+  <!-- <div class="sell">
+    <p>多行注释</p>
+    <p>多行注释</p>
+    <p>多行注释</p>
+  </div> -->
+  ```
+
+- 函数注释
+
+  ```javascript
+  /**
+   * 函数描述
+   *
+   * @param {string} p1 参数1的说明
+   * @param {string} p2 参数2的说明
+   * @param {number=} p3 参数3的说明（可选）
+   * @return {Object} 返回值描述
+   */
+  ```
+
+#### 5. 标点符号
+
+1. 每个表达式语句后面须加分号
+2. JS 代码中优先使用单引号，最外层统一使用单引号
+
+```javascript
+// bad
+const x = "test";
+
+// good
+const y = 'foo';
+const z = '<div id="test"></div>';
+```
+
+#### 6. 变量命名
+
+- 标准变量采用驼峰式命名
+- 常量全大写，用下划线连接
+- 构造函数，第一个字母大写
+
+#### 7. 函数命名
+
+**命名规则** : 前缀为动词，可读性强，见名晓义
+
+| 动词 | 含义                            | 返回值                                                |
+| ---- | ------------------------------- | ----------------------------------------------------- |
+| can  | 判断是否可执行某个动作 ( 权限 ) | 函数返回一个布尔值。true：可执行；false：不可执行     |
+| has  | 判断是否含有某个值              | 函数返回一个布尔值。true：含有此值；false：不含有此值 |
+| is   | 判断是否为某个值                | 函数返回一个布尔值。true：为某个值；false：不为某个值 |
+| get  | 获取某个值                      | 函数返回一个非布尔值                                  |
+| set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象            |
+
+```javascript
+// 是否可编辑
+function canEdit() {
+  return true;
+}
+
+// 获取标题
+function getTitle() {
+  return this.name;
+}
+```
+
+#### 8. 换行，空行
+
+  1. [对所有多行代码块使用大括号](https://github.com/airbnb/javascript#blocks)
+
+  ```javascript
+    // bad
+    if (test)
+      return false;
+
+    // good
+    if (test) return false;
+
+    // good
+    if (test) {
+      return false;
+    }
+
+    // bad
+    function foo() { return false; }
+
+    // good
+    function bar() {
+      return false;
+    }
+
+    // bad
+    if (test) {
+      thing1();
+      thing2();
+    }
+    else {
+      thing3();
+    }
+
+    // good
+    if (test) {
+      thing1();
+      thing2();
+    } else {
+      thing3();
+    }
+  ```
+
+#### [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
+  ```javascript
+  // bad
+  if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
+    thing1();
+  }
+
+  // bad
+  if (foo === 123 &&
+    bar === 'abc') {
+    thing1();
+  }
+
+  // bad
+  if (foo === 123
+    && bar === 'abc') {
+    thing1();
+  }
+
+  // bad
+  if (
+    foo === 123 &&
+    bar === 'abc'
+  ) {
+    thing1();
+  }
+
+  // good
+  if (
+    foo === 123
+    && bar === 'abc'
+  ) {
+    thing1();
+  }
+
+  // good
+  if (
+    (foo === 123 || bar === 'abc')
+    && doesItLookGoodWhenItBecomesThatLong()
+    && isThisReallyHappening()
+  ) {
+    thing1();
+  }
+
+  // good
+  if (foo === 123 && bar === 'abc') {
+    thing1();
+  }
+  ```
+
+#### 9. 常量
+
+**命名方法** : 全部大写
+**命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词。
+
+```javascript
+const MAX_COUNT = 10;
+const URL = 'https://www.google.com';
+```
+
+#### 10. 括号
+
+  下列关键字后必须有大括号（**即使代码块的内容只有一行**），且需要单独换行：
+
+```basic
+`if` ,  `else`, `for`,  `while`, `do`, `switch`, `try`, `catch`,  `finally`,  `with`。
+```
+
+```javascript
+// bad
+if (condition) doSomething();
+
+// good
+if (condition) {
+  doSomething();
+}
+```
+
+#### 10. undefined
+
+  永远不要直接使用 `undefined` 进行变量判断；
+
+  使用 `typeof` 和字符串 `undefined` 对变量进行判断。
+
+```javascript
+// bad
+if (person === undefined) {
+  ...
+}
+
+// good
+if (typeof person === 'undefined') {
+  ...
+}
+```
+
+#### 11. 组件中的 HTML 格式
+
+  组件元素有多个属性时闭合标志应单独占一行
+
+```html
+<template>
+  <!-- 组件元素有多个属性时 -->
+  <v-menu
+    bottom
+    offset-y
+    :key="index"
+    origin="bottom center"
+    transition="scale-transition"
+  >
+    <v-btn>{{ route.name }}</v-btn>
+  </v-menu>
+
+  <!-- 多个属性且无子元素 -->
+  <cascader
+    v-model="form.team"
+    :data="itemsData"
+    :clearable="false"
+  ></cascader>
+
+  <!-- 自闭合组件 -->
+  <my-component />
+</template>
+
+```
+
+  [自闭合组件](https://cn.vuejs.org/v2/style-guide/#%E8%87%AA%E9%97%AD%E5%90%88%E7%BB%84%E4%BB%B6-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+
+#### 12. 引入 CSS 和 JavaScript 文件
+
+​   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值。
+
+#### 13. 留空
+
+ 1. 使用留空应该遵循英语阅读惯例。
+
+    1. 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格。
+    2. 另外，大括号应该总是和他们前面的参数出现在同一行。
+
+    ```javascript
+    // bad
+    for ( let i = 0, j = arr.length; i < j; i++ )
+    {
+      // Do something.
+    }
+
+    for(let i=0,j=arr.length;i<j;i++){
+      // Do something.
+    }
+
+    // good
+    for (let i = 0, j = arr.length; i < j; i++) {
+      // Do something.
+    }
+    ```
+
+ 2. 操作符两端添加空格
+
+#### 14. 文件编码
+
+- 在 HTML中指定编码 `<meta charset="utf-8">`
+- 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
+
+#### 15. HTML
+
+  1. HTML 属性值使用双引号
+  2. 自闭合（self-closing）标签，无需闭合 ( 例如：img、input、br、hr 等 )
+  3. 充分利用 HTML 自身属性及样式继承原理减少代码量
+  4. 尽量减少标签数量
+  5. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式;
+  6. HTML 属性应该按照特定的顺序出现以保证易读
+    1. id
+    2. class
+    3. name
+    4. data-xxx
+    5. src, for, type, href
+    6. title, alt
+    7. aria-xxx, role
+
+#### 16. CSS
+
+ 1. class 应以功能或内容命名，不以表现形式命名
+ 2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
+ 3. 省略 "0" 值后面的单位。不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
+ 4. 代码缩进与格式: 每个 CSS 属性声明后都要使用一个分号，在紧跟属性名的冒号后使用一个空格
+
+#### 17. Vue 组件命名 和 文件夹结构
+
+1. 基本遵循[风格指南](<https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90>)
+
+2. 组件的命名需遵从以下原则：
+
+    1. **有意义的**: 不过于具体，也不过于抽象
+    2. **简短**: 2 到 3 个单词
+    3. **具有可读性**: 以便于沟通交流
+
+    ```html
+    <!-- Recommended -->
+    <app-header />
+    <user-list />
+    <range-slider />
+
+    <!-- Not recommended -->
+    <!-- 虽然简短但是可读性差. 使用 `button-group` 替代 -->
+    <btn-group />
+
+    <!-- ui 前缀太过于宽泛，在这里意义不明确 -->
+    <ui-slider />
+
+    <!-- 与自定义元素规范不兼容 -->
+    <slider />
+    ```
+
+##### 项目结构
+
+- 控制整体布局的文件放在 `layouts` 文件夹
+- 一些独立的组件应放在 `src/components` 文件夹
+
+#### PS
+
+1. 文件最后保留一个空行
+
+2. 行尾不要有空白字符
+
+3. 不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可
+
+4. 简单的 `if {} else {}` 应用三元表达式来代替
+
+5. 换行符统一用 'LF'
+
+6. 不要混用 tab 和 space
+
+7. 书写代码前, 考虑并提高样式重复使用率
+
+8. 省略外链资源 URL 协议部分: 省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免Mixed Content 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略。
+
+   ```html
+   <!-- Recommended -->
+   <script src="//www.w3cschool.cn/statics/js/autotrack.js"></script>
+   <!-- Not recommended -->
+   <script src="http://www.w3cschool.cn/statics/js/autotrack.js"></script>
+   ```
+
+9. 书写链接地址时, 必须避免重定向，例如：`href="https://www.qq.com/"`, 即须在URL地址后面加上`/`；
+
+ 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
+#### 常用模块命名
+
+- 头：header
+
+- 内容：content/container
+
+- 尾：footer
+
+- 导航：nav
+
+- 侧栏：sidebar
+
+- 栏目：column
+
+- 页面外围控制整体布局宽度：wrapper
+
+- 左右中：left right center
+
+- 登录条：loginbar
+
+- 标志：logo
+
+- 广告：banner
+
+- 页面主体：main
+
+- 热点：hot
+
+- 新闻：news
+
+- 下载：download
+
+- 子导航：subnav菜单：menu子菜单：submenu
+
+- 搜索：search
+
+- 友情链接：friendlink
+
+- 页脚：footer
+
+- 版权：copyright
+
+- 滚动：scroll
+
+- 内容：content
+
+- 标签页：tab
+
+- 文章列表：list
+
+- 提示信息：msg
+
+- 小技巧：tips
+
+- 栏目标题：title
+
+- 加入：joinus
+
+- 指南：guild
+
+- 服务：service
+
+- 注册：regsiter
+
+- 状态：status
+
+- 投票：vote
+
+- 合作伙伴：partner
