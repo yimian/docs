@@ -169,6 +169,49 @@ function getTitle() {
     } else {
       thing3();
     }
+
+    // no-else-return
+    // bad
+    function dogs() {
+      if (x) {
+        return x;
+      } else {
+        if (y) {
+          return y;
+        }
+      }
+    }
+
+    // good
+    function foo() {
+      if (x) {
+        return x;
+      }
+
+      return y;
+    }
+
+    // good
+    function cats() {
+      if (x) {
+        return x;
+      }
+
+      if (y) {
+        return y;
+      }
+    }
+
+    // good
+    function dogs(x) {
+      if (x) {
+        if (z) {
+          return y;
+        }
+      } else {
+        return z;
+      }
+    }
   ```
 
   2. 每行代码不超过 120 个字符
@@ -435,7 +478,7 @@ if (typeof person === 'undefined') {
   1. 文件最后保留一个空行
   2. 行尾不要有空白字符
   3. 不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可
-  4. 简单的 `if {} else {}` 应用三元表达式来代替
+  4. **简单的 `if {} else {}` 应用三元表达式来代替**
   5. 换行符统一用 'LF'
   6. 不要混用 tab 和 space
   7. 书写代码前, 考虑并提高样式重复使用率
