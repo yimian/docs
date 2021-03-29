@@ -1,15 +1,15 @@
-# 代码规范
+# JavaScript 编码规范
 
-**代码规范的初衷是为了统一团队成员代码风格，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。**
-
-**下面的规范如有觉得不合理或有更好的建议请联系田益铭**
+**代码规范旨在增强团队开发协作、提高代码质量，统一团队成员 JS 语法风格和书写习惯，减少程序出错的概率，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。其中也包含了部分 ES6 的语法规范和最佳实践。**
 
 现有规范:
 
 1. [ES6](https://github.com/airbnb/javascript)
 2. [Vue 风格指南](https://cn.vuejs.org/v2/style-guide/)
 
-***这里基于上面已有规范做一些特殊说明、修改、强调和归纳，着重于 Javascript***
+***这里基于上面已有规范做一些特殊说明、修改、强调和归纳提炼，着重于 Javascript***
+
+**下面的规范如有觉得不合理或有更好的建议请提 PR 或联系田益铭**
 
 ------
 
@@ -130,7 +130,7 @@ function getTitle() {
 
 #### 8. 换行，空行
 
-  1. [对所有多行代码块使用大括号](https://github.com/airbnb/javascript#blocks)
+1. [对所有多行代码块使用大括号](https://github.com/airbnb/javascript#blocks)
 
   ```javascript
     // bad
@@ -214,34 +214,35 @@ function getTitle() {
     }
   ```
 
-  2. 每行代码不超过 120 个字符
-  3. 逻辑块之间加空行增加可读性
+2. 每行代码不超过 120 个字符
+
+3. 逻辑块之间加空行增加可读性
 
 #### 13. 留空
 
- 1. 使用留空应该遵循英语阅读惯例。
+1. 使用留空应该遵循英语阅读惯例。
 
-    1. 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格。
-    2. 另外，大括号应该总是和他们前面的参数出现在同一行。
+  1. 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格。
+  2. 另外，大括号应该总是和他们前面的参数出现在同一行。
 
-    ```javascript
-    // bad
-    for ( let i = 0, j = arr.length; i < j; i++ )
-    {
-      // Do something.
-    }
+  ```javascript
+  // bad
+  for ( let i = 0, j = arr.length; i < j; i += 1 )
+  {
+    // Do something.
+  }
 
-    for(let i=0,j=arr.length;i<j;i++){
-      // Do something.
-    }
+  for(let i=0,j=arr.length;i<j;i++){
+    // Do something.
+  }
 
-    // good
-    for (let i = 0, j = arr.length; i < j; i++) {
-      // Do something.
-    }
-    ```
+  // good
+  for (let i = 0, j = arr.length; i < j; i += 1) {
+    // Do something.
+  }
+  ```
 
- 2. 操作符两端添加空格
+2. 操作符两端添加空格
 
 #### 9. [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
   ```javascript
@@ -305,9 +306,129 @@ const URL = 'https://www.google.com';
 
 - Android、iOS
 
+#### 10. 对象
+
+1. 使用字面量值创建对象
+
+```javascript
+// bad
+const a = new Object();
+
+// good
+const a = {};
+```
+
+2. 当使用动态属性名创建对象时，请使用对象计算属性名来进行创建
+
+```javascript
+function getKey(k) {
+  return `a key named ${k}`;
+}
+
+// bad
+const obj = {
+  id: 5,
+  name: 'San Francisco',
+};
+obj[getKey('enabled')] = true;
+
+// good
+const obj = {
+  id: 5,
+  name: 'San Francisco',
+  [getKey('enabled')]: true,
+};
+```
+
+3. 使用对象方法、属性的简写方式
+
+```javascript
+const job = 'FrontEnd';
+
+// bad
+const item = {
+  job: job,
+  value: 1,
+  addValue: function (val) {
+    return item.value + val;
+  },
+};
+
+// good
+const item = {
+  job,
+  value: 1,
+  addValue (val) {
+    return item.value + val;
+  },
+};
+```
+
+4. 只对非法标识符的属性使用引号
+5. 优先使用对象展开运算符 `...` 来做对象浅拷贝而不是使用 `Object.assign`
+
+
+#### 10. 数组
+
+1. 使用字面量值创建数组
+
+```javascript
+// bad
+const items = new Array();
+
+// good
+const items = [];
+```
+
+2. 向数组中添加元素时，使用 push 方法
+
+```javascript
+const items = [];
+
+// bad
+items[items.length] = 'test';
+
+// good
+items.push('test');
+```
+
+3. 使用展开运算符 `...` 复制数组
+4. 把一个可迭代的对象转换为数组时，使用展开运算符 `...` 而不是 `Array.from`
+
+```javascript
+const foo = document.querySelectorAll('.foo');
+
+// good
+const nodes = Array.from(foo);
+
+// best
+const nodes = [...foo];
+```
+
+11. 迭代器
+
+不要使用 iterators，建议使用 JS 更高优先级的函数代替 `for-in` 或 `for-of` 循环，除非迫不得已
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// bad
+let sum = 0;
+for (let num of numbers) {
+  sum += num;
+}
+
+// good
+let sum = 0;
+numbers.forEach(num => sum += num);
+
+// better
+const sum = numbers.reduce((total, num) => total + num, 0);
+```
+
 #### 10. 括号
 
-  下列关键字后必须有大括号（**即使代码块的内容只有一行**），且需要单独换行：
+下列关键字后必须有大括号（**即使代码块的内容只有一行**），且需要单独换行：
 
 ```basic
 `if` ,  `else`, `for`,  `while`, `do`, `switch`, `try`, `catch`,  `finally`,  `with`。
@@ -438,8 +559,9 @@ if (typeof person === 'undefined') {
   1. class 应以功能或内容命名，不以表现形式命名
   2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
   3. 省略 "0" 值后面的单位。不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
-  4. 代码缩进与格式: 每个 CSS 属性声明后都要使用一个分号，在紧跟属性名的冒号后使用一个空格
+  4. 代码缩进与格式: 每个 CSS 属性声明后都要加分号，在紧跟属性名的冒号后使用一个空格
   5. 减少选择器的长度（深度）
+  6. 样式名不能包含 ad、guanggao、ads、gg 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
 
 #### 17. Vue 组件命名 和 文件夹结构
 
@@ -487,7 +609,8 @@ if (typeof person === 'undefined') {
   10. 用 parseInt() 进行数字转换
   11. 构造器首字母大写
   12. 尽量不要用位运算、`continue` 语句
-  13. 省略外链资源 URL 协议部分: 省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免Mixed Content 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略。
+  13. 省略外链资源 URL 协议部分: 省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免Mixed Content 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略
+  14. 使用 === 和 !== 而非 == 和 !=
 
    ```html
    <!-- Recommended -->
@@ -531,7 +654,9 @@ if (typeof person === 'undefined') {
 - 热点：hot
 - 新闻：news
 - 下载：download
-- 子导航：subnav菜单：menu子菜单：submenu
+- 子导航：subnav
+- 菜单：menu
+- 子菜单：submenu
 - 搜索：search
 - 友情链接：friendlink
 - 页脚：footer
