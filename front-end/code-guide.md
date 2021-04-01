@@ -4,14 +4,19 @@
 
 现有规范:
 
-1. [ES6](https://github.com/airbnb/javascript)
+1. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 2. [Vue 风格指南](https://cn.vuejs.org/v2/style-guide/)
+3. [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
 
-***这里基于上面已有规范做一些特殊说明、修改、强调和归纳提炼，着重于 Javascript***
+***这里基于上面已有规范做一些特殊说明、修改、强调和归纳提炼，着重于 Javascript，更多信息请查看上面的链接***
 
 **下面的规范如有觉得不合理或有更好的建议请提 PR 或联系田益铭**
 
 ------
+
+### :page_with_curl: Index
+
+1. [命名规范](#命名规范)
 
 #### 1. 命名规范
 
@@ -77,10 +82,10 @@ Vue 项目：
   /**
    * 函数描述
    *
-   * @param {string} p1 参数1的说明
-   * @param {string} p2 参数2的说明，比较长
+   * @param {string} p1 参数 1 的说明
+   * @param {string} p2 参数 2 的说明，比较长
    *     那就换行了.
-   * @param {number=} p3 参数3的说明（可选）
+   * @param {number=} p3 参数 3 的说明（可选）
    * @return {Object} 返回值描述
    */
   function foo(p1, p2, p3) {
@@ -343,7 +348,7 @@ function getTitle() {
 #### 9. 常量
 
 - **命名方法** : 全部大写
-- **命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词。
+- **命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词
 
 ```javascript
 const MAX_COUNT = 10;
