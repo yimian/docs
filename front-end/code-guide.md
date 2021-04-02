@@ -16,31 +16,31 @@
 
 ## :page_with_curl: Table of Contents
 
-- [1. 命名规范](#命名规范)
-- [2. 基本原则](#基本原则)
-- [3. 缩进](#缩进)
-- [4. 注释](#注释)
-- [5. 标点符号](#标点符号)
-- [6. 变量命名](#变量命名)
-- [7. 函数命名](#函数命名)
-- [8. 换行、空行](#换行、空行)
-- [9. 留空](#留空)
-- [10. 控制语句 Control Statements](#控制语句-Control-Statements)
-- [11. 常量](#常量)
-- [12. 对象](#对象)
-- [13. 数组](#数组)
-- [14. 迭代器](#迭代器)
-- [14. 括号](#括号)
-- [15. undefined](#undefined)
-- [16. 解构赋值](#解构赋值)
-- [17. 组件中的 HTML 格式](#组件中的-HTML-格式)
-- [18. HTML](#HTML)
-- [19. CSS](#CSS)
-- [20. 引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
-- [21. Vue 组件命名 和 文件夹结构](#Vue-组件命名-和-文件夹结构)
-- [22. 项目结构](#项目结构)
-- [23. PS](#PS)
-- [24. 常用模块命名](#常用模块命名)
+1. [命名规范](#命名规范)
+2. [基本原则](#基本原则)
+3. [缩进](#缩进)
+4. [注释](#注释)
+5. [标点符号](#标点符号)
+6. [变量命名](#变量命名)
+7. [函数命名](#函数命名)
+8. [换行、空行](#换行、空行)
+9. [留空](#留空)
+10. [控制语句 Control Statements](#控制语句-Control-Statements)
+11. [常量](#常量)
+12. [对象](#对象)
+13. [数组](#数组)
+14. [迭代器](#迭代器)
+15. [括号](#括号)
+16. [undefined](#undefined)
+17. [解构赋值](#解构赋值)
+18. [组件中的 HTML 格式](#组件中的-HTML-格式)
+19. [HTML](#HTML)
+20. [CSS](#CSS)
+21. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
+22. [Vue 组件命名 和 文件夹结构](#Vue-组件命名-和-文件夹结构)
+23. [项目结构](#项目结构)
+24. [PS](#PS)
+25. [常用模块命名](#常用模块命名)
 
 ### 命名规范
 
@@ -321,7 +321,10 @@ function getTitle() {
 
 2. 操作符两端添加空格
 
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
 ### [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
+
   ```javascript
   // bad
   if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
@@ -463,6 +466,7 @@ const item = {
 5. 优先使用对象展开运算符 `...` 来做对象浅拷贝而不是使用 `Object.assign`
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
+
 ### 数组
 
 1. 使用字面量值创建数组
@@ -644,14 +648,14 @@ if (typeof person === 'undefined') {
   4. 尽量减少标签数量
   5. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式;
   6. HTML 属性应该按照特定的顺序出现以保证易读
-        1. id
-        2. class
-        3. name
-        4. data-*
-        5. src, for, type, href, value, max-length, max, min, pattern
-        6. placeholder, title, alt
-        7. aria-*, role
-        8. required, readonly, disabled
+      1. id
+      2. class
+      3. name
+      4. data-*
+      5. src, for, type, href, value, max-length, max, min, pattern
+      6. placeholder, title, alt
+      7. aria-*, role
+      8. required, readonly, disabled
   7. 字符编码 `<meta charset="utf-8">`
   8. 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
   9. IE 兼容模式 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
@@ -739,7 +743,7 @@ if (typeof person === 'undefined') {
    <script src="http://www.w3cschool.cn/statics/js/autotrack.js"></script>
    ```
 
-  14. 函数参数不要使用 `arguments`，选择 Rest 使用 `...` 代替
+  17. 函数参数不要使用 `arguments`，选择 Rest 使用 `...` 代替
 
   ```javascript
   // bad
@@ -754,7 +758,7 @@ if (typeof person === 'undefined') {
   }
   ```
 
-  15. 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
+  18. 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
