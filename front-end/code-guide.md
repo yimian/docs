@@ -23,6 +23,12 @@
 - [5. 标点符号](#标点符号)
 - [6. 变量命名](#变量命名)
 - [7. 函数命名](#函数命名)
+- [8. 换行、空行](#换行、空行)
+- [9. 留空](#留空)
+- [10. 控制语句 Control Statements](#控制语句-Control-Statements)
+- [11. 对象](#对象)
+- [12. 数组](#数组)
+- [13. 迭代器](#迭代器)
 
 ### 命名规范
 
@@ -54,9 +60,13 @@ Vue 项目：
 <style>/* ... */</style>
 ```
 
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
 ### 缩进
 
 > 统一两个空格缩进（anyway: 不要使用 `Tab` 或者 `Tab`、空格混搭)。
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### [注释](https://github.com/airbnb/javascript#comments)
 
@@ -108,6 +118,8 @@ Vue 项目：
 
 - 善用 `FIXME:` 和 `TODO:`
 
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
 ### 标点符号
 
 1. 每个表达式语句后面须加分号
@@ -122,6 +134,8 @@ const y = 'foo';
 const z = '<div id="test"></div>';
 ```
 
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
 ### 变量命名
 
 - 标准变量采用驼峰式命名
@@ -134,6 +148,8 @@ const z = '<div id="test"></div>';
   function Engine(options) {
   }
   ```
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### 函数命名
 
@@ -159,7 +175,9 @@ function getTitle() {
 }
 ```
 
-#### 8. 换行，空行
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 换行、空行
 
 1. [对所有多行代码块使用大括号](https://github.com/airbnb/javascript#blocks)
 
@@ -263,7 +281,9 @@ function getTitle() {
   var visited = {};
   ```
 
-#### 13. 留空
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 留空
 
 1. 使用留空应该遵循英语阅读惯例
 
@@ -289,7 +309,7 @@ function getTitle() {
 
 2. 操作符两端添加空格
 
-#### 9. [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
+### [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
   ```javascript
   // bad
   if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
@@ -353,7 +373,9 @@ function getTitle() {
   }
   ```
 
-#### 9. 常量
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 常量
 
 - **命名方法** : 全部大写
 - **命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词
@@ -365,7 +387,9 @@ const URL = 'https://www.google.com';
 
 - Android、iOS
 
-#### 10. 对象
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 对象
 
 1. 使用字面量值创建对象
 
@@ -426,8 +450,8 @@ const item = {
 4. 只对非法标识符的属性使用引号
 5. 优先使用对象展开运算符 `...` 来做对象浅拷贝而不是使用 `Object.assign`
 
-
-#### 10. 数组
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+### 数组
 
 1. 使用字面量值创建数组
 
@@ -464,7 +488,9 @@ const nodes = Array.from(foo);
 const nodes = [...foo];
 ```
 
-11. 迭代器
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 迭代器
 
 不要使用 iterators，建议使用 JS 更高优先级的函数代替 `for-in` 或 `for-of` 循环，除非迫不得已
 
@@ -485,7 +511,9 @@ numbers.forEach(num => sum += num);
 const sum = numbers.reduce((total, num) => total + num, 0);
 ```
 
-#### 10. 括号
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 括号
 
 下列关键字后必须有大括号（**即使代码块的内容只有一行**），且需要单独换行：
 
@@ -502,6 +530,8 @@ if (condition) {
   doSomething();
 }
 ```
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
 
 #### 10. undefined
 
