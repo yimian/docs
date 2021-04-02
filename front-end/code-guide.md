@@ -21,21 +21,21 @@
 3. [缩进](#缩进)
 4. [注释](#注释)
 5. [标点符号](#标点符号)
-6. [变量命名](#变量命名)
-7. [函数命名](#函数命名)
-8. [换行、空行](#换行、空行)
-9. [留空](#留空)
-10. [控制语句 Control Statements](#控制语句-Control-Statements)
-11. [常量](#常量)
-12. [对象](#对象)
-13. [数组](#数组)
-14. [迭代器](#迭代器)
-15. [括号](#括号)
-16. [undefined](#undefined)
-17. [解构赋值](#解构赋值)
-18. [组件中的 HTML 格式](#组件中的-HTML-格式)
-19. [HTML](#HTML)
-20. [CSS](#CSS)
+6. [换行、空行](#换行、空行)
+7. [留空](#留空)
+8. [括号](#括号)
+9. [常量](#常量)
+10. [变量命名](#变量)
+11. [函数命名](#函数命名)
+12. [解构赋值](#解构赋值)
+13. [对象](#对象)
+14. [数组](#数组)
+15. [迭代器](#迭代器)
+16. [控制语句 Control Statements](#控制语句-Control-Statements)
+17. [undefined](#undefined)
+18. [HTML](#HTML)
+19. [CSS](#CSS)
+20. [组件中的 HTML 格式](#组件中的-HTML-格式)
 21. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
 22. [Vue 组件命名 和 文件夹结构](#Vue-组件命名-和-文件夹结构)
 23. [项目结构](#项目结构)
@@ -144,47 +144,6 @@ const x = "test";
 // good
 const y = 'foo';
 const z = '<div id="test"></div>';
-```
-
-**[⬆ back to top](#page_with_curl-table-of-contents)**
-
-### 变量命名
-
-- 标准变量采用驼峰式命名
-- 常量全大写，用下划线连接
-- 构造函数，第一个字母大写
-- `boolean` 类型的变量使用 `is` 或 `has` 开头
-- `类名` 使用 `名词`
-
-  ```javascript
-  function Engine(options) {
-  }
-  ```
-
-**[⬆ back to top](#page_with_curl-table-of-contents)**
-
-### 函数命名
-
-**命名规则** : 前缀为动词，使用 `动宾短语`，可读性强，见名晓义
-
-| 动词 | 含义                            | 返回值                                                |
-| ---- | ------------------------------- | ----------------------------------------------------- |
-| can  | 判断是否可执行某个动作 ( 权限 ) | 函数返回一个布尔值。true：可执行；false：不可执行     |
-| has  | 判断是否含有某个值              | 函数返回一个布尔值。true：含有此值；false：不含有此值 |
-| is   | 判断是否为某个值                | 函数返回一个布尔值。true：为某个值；false：不为某个值 |
-| get  | 获取某个值                      | 函数返回一个非布尔值                                  |
-| set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象            |
-
-```javascript
-// 是否可编辑
-function canEdit() {
-  return true;
-}
-
-// 获取标题
-function getTitle() {
-  return this.name;
-}
 ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
@@ -299,8 +258,8 @@ function getTitle() {
 
 1. 使用留空应该遵循英语阅读惯例
 
-  1. 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格
-  2. 另外，大括号应该总是和他们前面的参数出现在同一行
+    1. 例如，每个逗号和冒号（以及适用的分号）后面要空一格，但在括号内部的左侧和右侧都不要加空格
+    2. 另外，大括号应该总是和他们前面的参数出现在同一行
 
   ```javascript
   // bad
@@ -323,70 +282,24 @@ function getTitle() {
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-### [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
 
-  ```javascript
-  // bad
-  if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
-    thing1();
-  }
+### 括号
 
-  // bad
-  if (foo === 123 &&
-    bar === 'abc') {
-    thing1();
-  }
+下列关键字后必须有大括号（**即使代码块的内容只有一行**），且需要单独换行：
 
-  // bad
-  if (foo === 123
-    && bar === 'abc') {
-    thing1();
-  }
+```basic
+`if` ,  `else`, `for`,  `while`, `do`, `switch`, `try`, `catch`,  `finally`,  `with`。
+```
 
-  // bad
-  if (
-    foo === 123 &&
-    bar === 'abc'
-  ) {
-    thing1();
-  }
+```javascript
+// bad
+if (condition) doSomething();
 
-  // good
-  if (
-    foo === 123
-    && bar === 'abc'
-  ) {
-    thing1();
-  }
-
-  // good
-  if (
-    (foo === 123 || bar === 'abc')
-    && doesItLookGoodWhenItBecomesThatLong()
-    && isThisReallyHappening()
-  ) {
-    thing1();
-  }
-
-  // good
-  if (foo === 123 && bar === 'abc') {
-    thing1();
-  }
-  ```
-
-  在 `if / else / for / do / while` 语句中，即使只有一行，也不得省略块 `{...}`
-
-  ```javascript
-  // bad
-  if (condition) callFunc();
-  if (condition)
-    callFunc();
-
-  // good
-  if (condition) {
-    callFunc();
-  }
-  ```
+// good
+if (condition) {
+  doSomething();
+}
+```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -403,6 +316,87 @@ const URL = 'https://www.google.com';
 - Android、iOS
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 变量
+
+- 标准变量采用驼峰式命名
+- 常量全大写，用下划线连接
+- 构造函数，第一个字母大写
+- `boolean` 类型的变量使用 `is` 或 `has` 开头
+- `类名` 使用 `名词`
+
+  ```javascript
+  function Engine(options) {
+  }
+  ```
+
+- 在你需要的地方声明变量，但是要放在合理的位置
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 函数命名
+
+**命名规则** : 前缀为动词，使用 `动宾短语`，可读性强，见名晓义
+
+| 动词 | 含义                            | 返回值                                                |
+| ---- | ------------------------------- | ----------------------------------------------------- |
+| can  | 判断是否可执行某个动作 ( 权限 ) | 函数返回一个布尔值。true：可执行；false：不可执行     |
+| has  | 判断是否含有某个值              | 函数返回一个布尔值。true：含有此值；false：不含有此值 |
+| is   | 判断是否为某个值                | 函数返回一个布尔值。true：为某个值；false：不为某个值 |
+| get  | 获取某个值                      | 函数返回一个非布尔值                                  |
+| set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象            |
+
+```javascript
+// 是否可编辑
+function canEdit() {
+  return true;
+}
+
+// 获取标题
+function getTitle() {
+  return this.name;
+}
+```
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### [解构赋值](https://github.com/airbnb/javascript#destructuring)
+
+  ```javascript
+  // good
+  const { data } = this;
+
+  // bad
+  function getFullName(user) {
+    const firstName = user.firstName;
+    const lastName = user.lastName;
+
+    return `${firstName} ${lastName}`;
+  }
+
+  // good
+  function getFullName(user) {
+    const { firstName, lastName } = user;
+    return `${firstName} ${lastName}`;
+  }
+
+  // best
+  function getFullName({ firstName, lastName }) {
+    return `${firstName} ${lastName}`;
+  }
+
+  const arr = [1, 2, 3, 4];
+
+  // bad
+  const first = arr[0];
+  const second = arr[1];
+
+  // good
+  const [first, second] = arr;
+  ```
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
 
 ### 对象
 
@@ -529,25 +523,74 @@ const sum = numbers.reduce((total, num) => total + num, 0);
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-### 括号
+### [控制语句 Control Statements](https://github.com/airbnb/javascript#control-statements)
 
-下列关键字后必须有大括号（**即使代码块的内容只有一行**），且需要单独换行：
+  ```javascript
+  // bad
+  if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
+    thing1();
+  }
 
-```basic
-`if` ,  `else`, `for`,  `while`, `do`, `switch`, `try`, `catch`,  `finally`,  `with`。
-```
+  // bad
+  if (foo === 123 &&
+    bar === 'abc') {
+    thing1();
+  }
 
-```javascript
-// bad
-if (condition) doSomething();
+  // bad
+  if (foo === 123
+    && bar === 'abc') {
+    thing1();
+  }
 
-// good
-if (condition) {
-  doSomething();
-}
-```
+  // bad
+  if (
+    foo === 123 &&
+    bar === 'abc'
+  ) {
+    thing1();
+  }
+
+  // good
+  if (
+    foo === 123
+    && bar === 'abc'
+  ) {
+    thing1();
+  }
+
+  // good
+  if (
+    (foo === 123 || bar === 'abc')
+    && doesItLookGoodWhenItBecomesThatLong()
+    && isThisReallyHappening()
+  ) {
+    thing1();
+  }
+
+  // good
+  if (foo === 123 && bar === 'abc') {
+    thing1();
+  }
+  ```
+
+  在 `if / else / for / do / while` 语句中，即使只有一行，也不得省略块 `{...}`
+
+  ```javascript
+  // bad
+  if (condition) callFunc();
+  if (condition)
+    callFunc();
+
+  // good
+  if (condition) {
+    callFunc();
+  }
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
+
+
 
 ### undefined
 
@@ -569,40 +612,38 @@ if (typeof person === 'undefined') {
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-### [解构赋值](https://github.com/airbnb/javascript#destructuring)
+### HTML
 
-  ```javascript
-  // good
-  const { data } = this;
+  1. HTML 属性值使用双引号
+  2. 自闭合（self-closing）标签，无需闭合 ( 例如：img、input、br、hr 等 )
+  3. 充分利用 HTML 自身属性及样式继承原理减少代码量
+  4. 尽量减少标签数量
+  5. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式;
+  6. HTML 属性应该按照特定的顺序出现以保证易读
+      1. id
+      2. class
+      3. name
+      4. data-*
+      5. src, for, type, href, value, max-length, max, min, pattern
+      6. placeholder, title, alt
+      7. aria-*, role
+      8. required, readonly, disabled
+  7. 字符编码 `<meta charset="utf-8">`
+  8. 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
+  9. IE 兼容模式 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
+  10. 响应式 `<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">`
 
-  // bad
-  function getFullName(user) {
-    const firstName = user.firstName;
-    const lastName = user.lastName;
+**[⬆ back to top](#page_with_curl-table-of-contents)**
 
-    return `${firstName} ${lastName}`;
-  }
 
-  // good
-  function getFullName(user) {
-    const { firstName, lastName } = user;
-    return `${firstName} ${lastName}`;
-  }
+### CSS
 
-  // best
-  function getFullName({ firstName, lastName }) {
-    return `${firstName} ${lastName}`;
-  }
-
-  const arr = [1, 2, 3, 4];
-
-  // bad
-  const first = arr[0];
-  const second = arr[1];
-
-  // good
-  const [first, second] = arr;
-  ```
+  1. class 应以功能或内容命名，不以表现形式命名
+  2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
+  3. 省略 "0" 值后面的单位。不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
+  4. 代码缩进与格式: 每个 CSS 属性声明后都要加分号，在紧跟属性名的冒号后使用一个空格
+  5. 减少选择器的长度（深度）
+  6. 样式名不能包含 ad、guanggao、ads、gg 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -637,40 +678,6 @@ if (typeof person === 'undefined') {
 ```
 
   [自闭合组件](https://cn.vuejs.org/v2/style-guide/#%E8%87%AA%E9%97%AD%E5%90%88%E7%BB%84%E4%BB%B6-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-
-**[⬆ back to top](#page_with_curl-table-of-contents)**
-
-### HTML
-
-  1. HTML 属性值使用双引号
-  2. 自闭合（self-closing）标签，无需闭合 ( 例如：img、input、br、hr 等 )
-  3. 充分利用 HTML 自身属性及样式继承原理减少代码量
-  4. 尽量减少标签数量
-  5. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式;
-  6. HTML 属性应该按照特定的顺序出现以保证易读
-      1. id
-      2. class
-      3. name
-      4. data-*
-      5. src, for, type, href, value, max-length, max, min, pattern
-      6. placeholder, title, alt
-      7. aria-*, role
-      8. required, readonly, disabled
-  7. 字符编码 `<meta charset="utf-8">`
-  8. 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
-  9. IE 兼容模式 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
-  10. 响应式 `<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">`
-
-**[⬆ back to top](#page_with_curl-table-of-contents)**
-
-### CSS
-
-  1. class 应以功能或内容命名，不以表现形式命名
-  2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
-  3. 省略 "0" 值后面的单位。不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
-  4. 代码缩进与格式: 每个 CSS 属性声明后都要加分号，在紧跟属性名的冒号后使用一个空格
-  5. 减少选择器的长度（深度）
-  6. 样式名不能包含 ad、guanggao、ads、gg 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -716,7 +723,7 @@ if (typeof person === 'undefined') {
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-#### PS
+### PS
 
   1. 文件最后保留一个空行
   2. 行尾不要有空白字符
