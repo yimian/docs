@@ -26,9 +26,21 @@
 - [8. 换行、空行](#换行、空行)
 - [9. 留空](#留空)
 - [10. 控制语句 Control Statements](#控制语句-Control-Statements)
-- [11. 对象](#对象)
-- [12. 数组](#数组)
-- [13. 迭代器](#迭代器)
+- [11. 常量](#常量)
+- [12. 对象](#对象)
+- [13. 数组](#数组)
+- [14. 迭代器](#迭代器)
+- [14. 括号](#括号)
+- [15. undefined](#undefined)
+- [16. 解构赋值](#解构赋值)
+- [17. 组件中的 HTML 格式](#组件中的-HTML-格式)
+- [18. HTML](#HTML)
+- [19. CSS](#CSS)
+- [20. 引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
+- [21. Vue 组件命名 和 文件夹结构](#Vue-组件命名-和-文件夹结构)
+- [22. 项目结构](#项目结构)
+- [23. PS](#PS)
+- [24. 常用模块命名](#常用模块命名)
 
 ### 命名规范
 
@@ -533,7 +545,7 @@ if (condition) {
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-#### 10. undefined
+### undefined
 
   永远不要直接使用 `undefined` 进行变量判断；
 
@@ -551,7 +563,9 @@ if (typeof person === 'undefined') {
 }
 ```
 
-#### 11. [解构赋值](https://github.com/airbnb/javascript#destructuring)
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### [解构赋值](https://github.com/airbnb/javascript#destructuring)
 
   ```javascript
   // good
@@ -586,7 +600,9 @@ if (typeof person === 'undefined') {
   const [first, second] = arr;
   ```
 
-#### 11. 组件中的 HTML 格式
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 组件中的 HTML 格式
 
   组件元素有多个属性时闭合标志应单独占一行
 
@@ -618,11 +634,9 @@ if (typeof person === 'undefined') {
 
   [自闭合组件](https://cn.vuejs.org/v2/style-guide/#%E8%87%AA%E9%97%AD%E5%90%88%E7%BB%84%E4%BB%B6-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
 
-#### 12. 引入 CSS 和 JavaScript 文件
+**[⬆ back to top](#page_with_curl-table-of-contents)**
 
-​   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值。
-
-#### 15. HTML
+### HTML
 
   1. HTML 属性值使用双引号
   2. 自闭合（self-closing）标签，无需闭合 ( 例如：img、input、br、hr 等 )
@@ -643,7 +657,9 @@ if (typeof person === 'undefined') {
   9. IE 兼容模式 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
   10. 响应式 `<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">`
 
-#### 16. CSS
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### CSS
 
   1. class 应以功能或内容命名，不以表现形式命名
   2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
@@ -652,7 +668,15 @@ if (typeof person === 'undefined') {
   5. 减少选择器的长度（深度）
   6. 样式名不能包含 ad、guanggao、ads、gg 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
 
-#### 17. Vue 组件命名 和 文件夹结构
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 引入 CSS 和 JavaScript 文件
+
+​   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值。
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### Vue 组件命名 和 文件夹结构
 
 1. 基本遵循[风格指南](<https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90>)
 
@@ -679,10 +703,14 @@ if (typeof person === 'undefined') {
     <slider />
     ```
 
-##### 项目结构
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 项目结构
 
 - 控制整体布局的文件放在 `layouts` 文件夹
 - 一些独立的组件应放在 `src/components` 文件夹
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
 
 #### PS
 
@@ -728,7 +756,9 @@ if (typeof person === 'undefined') {
 
   15. 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
 
-#### 常用模块命名
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### 常用模块命名
 
 - 头：header
 - 内容：content/container
@@ -766,3 +796,5 @@ if (typeof person === 'undefined') {
 - 状态：status
 - 投票：vote
 - 合作伙伴：partner
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
