@@ -1,6 +1,6 @@
 # 代码规范
 
-**代码规范旨在增强团队开发协作、提高代码质量，统一团队成员 JS 语法风格和书写习惯，减少程序出错的概率。让代码容易被理解和被维护，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。其中也包含了部分 ES6 的语法规范和最佳实践。**
+**代码规范旨在增强团队开发协作、提升代码质量、统一团队成员 JS 语法风格和书写习惯，减少程序出错的概率。让代码容易被理解和被维护，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。下面文档中也包含了部分 ES6 的语法规范和最佳实践。**
 
 ***这里基于已有规范做一些特殊说明、修改、强调和归纳提炼，文档着重于 Javascript，更多信息请查看下面的规范***
 
@@ -38,7 +38,7 @@
 20. [CSS](#CSS)
 21. [组件中的 HTML 格式](#组件中的-HTML-格式)
 22. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
-23. [Vue 组件命名 和 文件夹结构](#Vue-组件命名-和-文件夹结构)
+23. [Vue 组件命名和结构](#Vue-组件命名和结构)
 24. [项目结构](#项目结构)
 25. [PS](#PS)
 26. [常用模块命名](#常用模块命名)
@@ -46,13 +46,14 @@
 ### 命名规范
 
 - 项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号，例：`my-project-name`
+- 前后端分离的项目，前端项目的命名后缀须带上 `-fe`，例：`oneload-fe`
 - CSS 文件命名: `suffix.css(.scss)`，共用 `global.css`，首页 `index.css`，其他依实际模块需求命名
 - JS 文件命名: `suffix.js`，共用 `common.js`，其他依实际模块需求命名
-- 有复数结构时，要采用复数命名法，比如说： scripts, styles, images, data-models
+- 有复数结构时，要采用复数命名法，比如说： scripts, styles, plugins, images, data-models
 - 以字母开头命名
-- 避免用一个字母命名，让你的命名有意义
+- 避免只用一个字母来命名，应该让你的命名更有意义
 - JS 中不要用前置或后置下划线
-- 常用模块命名见文末
+- 常用模块命名见[文末](#常用模块命名)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -67,7 +68,7 @@
 Vue 项目：
 统一采用下面的形式
 
-（只有较特殊且针对单个组件的样式才应该放在组件里，其余样式应该合理地放到 `styles` 文件夹里）
+（只有特殊且针对单个组件的样式才应该放在组件里，其余样式应该合理地放到 `src/styles` 文件夹）
 
 ```html
 <template>...</template>
@@ -106,7 +107,7 @@ Vue 项目：
   </div> -->
   ```
 
-  - 尽量避免使用 `/*...*/` 这样的多行注释。有多行注释内容时，使用多个单行注释
+  - 尽量避免使用 `/*...*/` 这样的多行注释。有多行注释内容时，**使用多个单行注释**
 
 - 函数注释
 
@@ -129,7 +130,7 @@ Vue 项目：
   }
   ```
 
-- 善用 `FIXME:` 和 `TODO:`，用 `// FIXME:` 给问题做注释，用 `// TODO:` 去注释问题的解决方案
+- 善用 `FIXME` 和 `TODO`。用 `// FIXME:` 给问题做注释，用 `// TODO:` 来注释问题的解决方案
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -138,14 +139,14 @@ Vue 项目：
 1. 每个表达式语句后面须加分号
 2. JS 代码中优先使用单引号，最外层统一使用单引号
 
-```javascript
-// bad
-const x = "test";
+  ```javascript
+  // bad
+  const x = "test";
 
-// good
-const y = 'foo';
-const z = '<div id="test"></div>';
-```
+  // good
+  const y = 'foo';
+  const z = '<div id="test"></div>';
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -154,102 +155,102 @@ const z = '<div id="test"></div>';
 1. **[对所有多行代码块使用大括号](https://github.com/airbnb/javascript#blocks)**
 
   ```javascript
-    // bad
-    if (test)
-      return false;
+  // bad
+  if (test)
+    return false;
 
-    // bad
-    if (test) return false;
+  // bad
+  if (test) return false;
 
-    // good
-    if (test) {
-      return false;
-    }
+  // good
+  if (test) {
+    return false;
+  }
 
-    // bad
-    function foo() { return false; }
+  // bad
+  function foo() { return false; }
 
-    // good
-    function bar() {
-      return false;
-    }
+  // good
+  function bar() {
+    return false;
+  }
 
-    // bad
-    if (test) {
-      thing1();
-      thing2();
-    }
-    else {
-      thing3();
-    }
+  // bad
+  if (test) {
+    thing1();
+    thing2();
+  }
+  else {
+    thing3();
+  }
 
-    // good
-    if (test) {
-      thing1();
-      thing2();
+  // good
+  if (test) {
+    thing1();
+    thing2();
+  } else {
+    thing3();
+  }
+
+  // no-else-return
+  // bad
+  function dogs() {
+    if (x) {
+      return x;
     } else {
-      thing3();
-    }
-
-    // no-else-return
-    // bad
-    function dogs() {
-      if (x) {
-        return x;
-      } else {
-        if (y) {
-          return y;
-        }
-      }
-    }
-
-    // good
-    function foo() {
-      if (x) {
-        return x;
-      }
-
-      return y;
-    }
-
-    // good
-    function cats() {
-      if (x) {
-        return x;
-      }
-
       if (y) {
         return y;
       }
     }
+  }
 
-    // good
-    function dogs(x) {
-      if (x) {
-        if (z) {
-          return y;
-        }
-      } else {
-        return z;
+  // good
+  function foo() {
+    if (x) {
+      return x;
+    }
+
+    return y;
+  }
+
+  // good
+  function cats() {
+    if (x) {
+      return x;
+    }
+
+    if (y) {
+      return y;
+    }
+  }
+
+  // good
+  function dogs(x) {
+    if (x) {
+      if (z) {
+        return y;
       }
+    } else {
+      return z;
     }
+  }
 
-    // best
-    // 如果只有两个返回值且需要简单的判断，最好使用 `三元表达式` 代替 `if {} else {}`
-    function foo() {
-      return x === 0 ? x : y;
-    }
+  // best
+  // 如果只有两个返回值且需要简单的判断，最好使用 `三元表达式` 代替 `if {} else {}`
+  function foo() {
+    return x === 0 ? x : y;
+  }
 
-    // best
-    // 当 x 为 [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 时，返回 y
-    function foo() {
-      return x || y;
-    }
+  // best
+  // 当 x 为 [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 时，返回 y
+  function foo() {
+    return x || y;
+  }
   ```
 
 2. 每行代码不超过 120 个字符
 3. 逻辑块之间加空行增加可读性
-4. 每个 `let`、`const` 只能声明一个变量，且`变量声明后需要空行`（当变量声明在代码块的最后一行时，则无需空行）
+4. 每个 `let`、`const` 只能声明一个变量，且**变量声明后需要空行**（当变量声明在代码块的最后一行时，则无需空行）
 5. 注释前需要加空行（当注释在代码块的第一行时，则无需空行）
 6. 文件最后保留一个空行
 
@@ -308,170 +309,169 @@ if (condition) {
 1. 用 `===` 和 `!==` 而不是 `==` 和 `!=`
 2. 布尔值要用缩写
 
-```javascript
-// bad
-if (isValid === true) {
-  // ...
-}
+  ```javascript
+  // bad
+  if (isValid === true) {
+    // ...
+  }
 
-// good
-if (isValid) {
-  // ...
-}
+  // good
+  if (isValid) {
+    // ...
+  }
 
-// bad
-if (name) {
-  // ...
-}
+  // bad
+  if (name) {
+    // ...
+  }
 
-// good
-if (name !== '') {
-  // ...
-}
+  // good
+  if (name !== '') {
+    // ...
+  }
 
-// 有待商榷
-// bad
-if (collection.length) {
-  // ...
-}
+  // 有待商榷
+  // bad or good
+  if (collection.length) {
+    // ...
+  }
 
-// good
-if (collection.length > 0) {
-  // ...
-}
-```
+  // good
+  if (collection.length > 0) {
+    // ...
+  }
+  ```
 
-- 三元表达式不应该嵌套，通常是单行表达式
+3. 三元表达式不应该嵌套，通常是单行表达式
 
-```javascript
-// bad
-const foo = maybe1 > maybe2
-  ? 'bar'
-  : value1 > value2 ? 'baz' : null;
+  ```javascript
+  // bad
+  const foo = maybe1 > maybe2
+    ? 'bar'
+    : value1 > value2 ? 'baz' : null;
 
-// split into 2 separated ternary expressions
-const maybeNull = value1 > value2 ? 'baz' : null;
+  // split into 2 separated ternary expressions
+  const maybeNull = value1 > value2 ? 'baz' : null;
 
-// better
-const foo = maybe1 > maybe2
-  ? 'bar'
-  : maybeNull;
+  // better
+  const foo = maybe1 > maybe2
+    ? 'bar'
+    : maybeNull;
 
-// best
-const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
-```
+  // best
+  const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
+  ```
 
-- 避免不必要的三元表达式
+4. 避免不必要的三元表达式
 
-```javascript
-// bad
-const foo = a ? a : b;
-const bar = c ? true : false;
-const baz = c ? false : true;
+  ```javascript
+  // bad
+  const foo = a ? a : b;
+  const bar = c ? true : false;
+  const baz = c ? false : true;
 
-// good
-const foo = a || b;
-const bar = !!c;
-const baz = !c;
-```
+  // good
+  const foo = a || b;
+  const bar = !!c;
+  const baz = !c;
+  ```
 
-- 用圆括号来组合操作符。只有当标准的算术运算符（+, -, *, 和 /），并且它们的优先级显而易见时，才可以不用圆括号括起来
+5. 用括号来组合操作符。只有当为标准的算术运算符（+, -, *, 和 /），并且它们的优先级显而易见时，才可以不用括号
 
-```javascript
-// bad
-const foo = a && b < 0 || c > 0 || d + 1 === 0;
+  ```javascript
+  // bad
+  const foo = a && b < 0 || c > 0 || d + 1 === 0;
 
-// bad
-const bar = a ** b - 5 % d;
+  // bad
+  const bar = a ** b - 5 % d;
 
-// bad
-// 他人会陷入(a || b) && c 的迷惑中
-if (a || b && c) {
-  return d;
-}
+  // bad
+  // 他人会陷入 (a || b) && c 的迷惑中
+  if (a || b && c) {
+    return d;
+  }
 
-// good
-const foo = (a && b < 0) || c > 0 || (d + 1 === 0);
+  // good
+  const foo = (a && b < 0) || c > 0 || (d + 1 === 0);
 
-// good
-const bar = (a ** b) - (5 % d);
+  // good
+  const bar = (a ** b) - (5 % d);
 
-// good
-if (a || (b && c)) {
-  return d;
-}
+  // good
+  if (a || (b && c)) {
+    return d;
+  }
 
-// good
-const bar = a + b / c * d;
-```
+  // good
+  const bar = a + b / c * d;
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### 常量
 
-- **命名方法** : 全部大写
-- **命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词
+1. **命名方法** : 全部大写
+2. **命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词
 
-```javascript
-const MAX_COUNT = 10;
-const URL = 'https://www.google.com';
-```
+  ```javascript
+  const MAX_COUNT = 10;
+  const URL = 'https://www.google.com/';
+  ```
 
-- Android、iOS
+3. Android、iOS
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### 变量
 
-- 标准变量采用驼峰式命名
-- 为每个变量声明都用一个 `const` 或 `let`
+1. 标准变量采用驼峰式命名
+2. 为每个变量声明都用一个 `const` 或 `let`
 
-```javascript
-// bad
-let hangModules = [],
-    missModules = [],
-    visited = {};
+  ```javascript
+  // bad
+  let hangModules = [],
+      missModules = [],
+      visited = {};
 
-// good
-let hangModules = [];
-let missModules = [];
-let visited = {};
-```
+  // good
+  let hangModules = [];
+  let missModules = [];
+  let visited = {};
+  ```
 
-- 把 `const`s 和 `let`s 分组
+3. 把 `const`s 和 `let`s 分组
 
-```javascript
-// bad
-let i, len, dragonball,
-    items = getItems(),
-    goSportsTeam = true;
+  ```javascript
+  // bad
+  let i, len, dragonball,
+      items = getItems(),
+      goSportsTeam = true;
 
-// bad
-let i;
-const items = getItems();
-let dragonball;
-const goSportsTeam = true;
-let len;
+  // bad
+  let i;
+  const items = getItems();
+  let dragonball;
+  const goSportsTeam = true;
+  let len;
 
-// good
-const goSportsTeam = true;
-const items = getItems();
-let dragonball;
-let i;
-let length;
-```
+  // good
+  const goSportsTeam = true;
+  const items = getItems();
+  let dragonball;
+  let i;
+  let length;
+  ```
 
-- 构造函数，第一个字母大写
-- `boolean` 类型的变量使用 `is` 或 `has` 开头
-- 不要使用一元自增自减运算符
-- `类名` 使用 `名词`
+4. 构造函数，第一个字母大写
+5. 不要使用一元自增自减运算符
+6. `boolean` 类型的变量使用 `is` 或 `has` 开头
+7. 在你需要的地方再声明变量，但是要放在合理的位置
+8. `类名` 使用 `名词`
 
   ```javascript
   function Engine(options) {
   }
   ```
-
-- 在你需要的地方再声明变量，但是要放在合理的位置
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -842,7 +842,7 @@ if (typeof person === 'undefined') {
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-### Vue 组件命名 和 文件夹结构
+### Vue 组件命名和结构
 
 1. 基本遵循[风格指南](<https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90>)
 
@@ -868,6 +868,8 @@ if (typeof person === 'undefined') {
     <!-- 与自定义元素规范不兼容 -->
     <slider />
     ```
+
+3. [组件-实例的选项的顺序推荐](https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6-%E5%AE%9E%E4%BE%8B%E7%9A%84%E9%80%89%E9%A1%B9%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8E%A8%E8%8D%90)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
