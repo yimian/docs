@@ -464,8 +464,8 @@ if (condition) {
 
 4. 构造函数，第一个字母大写
 5. 不要使用一元自增自减运算符
-6. `boolean` 类型的变量使用 `is` 或 `has` 开头
-7. 在你需要的地方再声明变量，但是要放在合理的位置
+6. 在你需要的地方再声明变量，但是要放在合理的位置
+7. `boolean` 类型的变量使用 `is` 或 `has` 开头
 8. `类名` 使用 `名词`
 
   ```javascript
@@ -487,17 +487,17 @@ if (condition) {
 | get  | 获取某个值                      | 函数返回一个非布尔值                                  |
 | set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象                |
 
-```javascript
-// 是否可编辑
-function canEdit() {
-  return true;
-}
+  ```javascript
+  // 是否可编辑
+  function canEdit() {
+    return true;
+  }
 
-// 获取标题
-function getTitle() {
-  return this.name;
-}
-```
+  // 获取标题
+  function getTitle() {
+    return this.name;
+  }
+  ```
 
 - 函数参数不要使用 `arguments`，使用 `...` 代替
 
@@ -557,59 +557,59 @@ function getTitle() {
 
 1. 使用字面量值创建对象
 
-```javascript
-// bad
-const a = new Object();
+  ```javascript
+  // bad
+  const a = new Object();
 
-// good
-const a = {};
-```
+  // good
+  const a = {};
+  ```
 
 2. 当使用动态属性名创建对象时，请使用对象计算属性名来进行创建
 
-```javascript
-function getKey(k) {
-  return `a key named ${k}`;
-}
+  ```javascript
+  function getKey(k) {
+    return `a key named ${k}`;
+  }
 
-// bad
-const obj = {
-  id: 5,
-  name: 'San Francisco',
-};
-obj[getKey('enabled')] = true;
+  // bad
+  const obj = {
+    id: 5,
+    name: 'San Francisco',
+  };
+  obj[getKey('enabled')] = true;
 
-// good
-const obj = {
-  id: 5,
-  name: 'San Francisco',
-  [getKey('enabled')]: true,
-};
-```
+  // good
+  const obj = {
+    id: 5,
+    name: 'San Francisco',
+    [getKey('enabled')]: true,
+  };
+  ```
 
 3. 使用对象方法、属性的简写方式
 
-```javascript
-const job = 'FrontEnd';
+  ```javascript
+  const job = 'FrontEnd';
 
-// bad
-const item = {
-  job: job,
-  value: 1,
-  addValue: function (val) {
-    return item.value + val;
-  },
-};
+  // bad
+  const item = {
+    job: job,
+    value: 1,
+    addValue: function (val) {
+      return item.value + val;
+    },
+  };
 
-// good
-const item = {
-  job,
-  value: 1,
-  addValue (val) {
-    return item.value + val;
-  },
-};
-```
+  // good
+  const item = {
+    job,
+    value: 1,
+    addValue (val) {
+      return item.value + val;
+    },
+  };
+  ```
 
 4. 只对非法标识符的属性使用引号
 5. 优先使用对象展开运算符 `...` 来做对象`浅拷贝`而不是使用 `Object.assign`
@@ -620,38 +620,38 @@ const item = {
 
 1. 使用字面量值创建数组
 
-```javascript
-// bad
-const items = new Array();
+  ```javascript
+  // bad
+  const items = new Array();
 
-// good
-const items = [];
-```
+  // good
+  const items = [];
+  ```
 
 2. 向数组中添加元素时，使用 push 方法
 
-```javascript
-const items = [];
+  ```javascript
+  const items = [];
 
-// bad
-items[items.length] = 'test';
+  // bad
+  items[items.length] = 'test';
 
-// good
-items.push('test');
-```
+  // good
+  items.push('test');
+  ```
 
 3. 使用展开运算符 `...` 复制数组
 4. 把一个可迭代的对象转换为数组时，使用展开运算符 `...` 而不是 `Array.from`
 
-```javascript
-const foo = document.querySelectorAll('.foo');
+  ```javascript
+  const foo = document.querySelectorAll('.foo');
 
-// bad
-const nodes = Array.from(foo);
+  // bad
+  const nodes = Array.from(foo);
 
-// best
-const nodes = [...foo];
-```
+  // best
+  const nodes = [...foo];
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -659,24 +659,24 @@ const nodes = [...foo];
 
 不要使用 `iterators`，建议使用 JS 更高优先级的函数代替 `for-in` 或 `for-of` 循环，除非迫不得已
 
-```javascript
-const numbers = [1, 2, 3, 4, 5];
+  ```javascript
+  const numbers = [1, 2, 3, 4, 5];
 
-// bad
-let sum = 0;
+  // bad
+  let sum = 0;
 
-for (let num of numbers) {
-  sum += num;
-}
+  for (let num of numbers) {
+    sum += num;
+  }
 
-// good
-let sum = 0;
+  // good
+  let sum = 0;
 
-numbers.forEach(num => sum += num);
+  numbers.forEach(num => sum += num);
 
-// better
-const sum = numbers.reduce((total, num) => total + num, 0);
-```
+  // better
+  const sum = numbers.reduce((total, num) => total + num, 0);
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -731,7 +731,7 @@ const sum = numbers.reduce((total, num) => total + num, 0);
   }
   ```
 
-  **在 `if / else / for / do / while` 语句中，即使只有一行，也不得省略块 `{...}`**
+**在 `if / else / for / do / while` 语句中，即使只有一行，也不得省略块 `{...}`**
 
   ```javascript
   // bad
@@ -753,17 +753,17 @@ const sum = numbers.reduce((total, num) => total + num, 0);
 
   使用 `typeof` 和字符串 `undefined` 对变量进行判断
 
-```javascript
-// bad
-if (person === undefined) {
-  ...
-}
+  ```javascript
+  // bad
+  if (person === undefined) {
+    ...
+  }
 
-// good
-if (typeof person === 'undefined') {
-  ...
-}
-```
+  // good
+  if (typeof person === 'undefined') {
+    ...
+  }
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -771,7 +771,7 @@ if (typeof person === 'undefined') {
 
   1. 元素 id 必须保证页面唯一
   2. HTML 属性值使用双引号
-  3. 自闭合（self-closing）标签，无需闭合 ( 例如：img、input、br、hr 等 )
+  3. 自闭合（self-closing）标签，无需闭合 (例如：img、input、br、hr 等)
   4. 充分利用 HTML 自身属性及样式继承原理减少代码量
   5. 尽量减少标签数量
   6. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式
@@ -804,7 +804,7 @@ if (typeof person === 'undefined') {
 
 ### 组件中的 HTML 格式
 
-  组件元素有多个属性时闭合标志应`单独占一行`
+  **组件元素有多个属性时闭合标志应`单独占一行`**
 
 ```html
 <template>
@@ -829,7 +829,6 @@ if (typeof person === 'undefined') {
   <!-- 自闭合组件 -->
   <my-component />
 </template>
-
 ```
 
   [自闭合组件](https://cn.vuejs.org/v2/style-guide/#%E8%87%AA%E9%97%AD%E5%90%88%E7%BB%84%E4%BB%B6-%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
@@ -896,19 +895,21 @@ if (typeof person === 'undefined') {
   10. 构造器首字母大写
   11. 尽量不要用位运算、`continue` 语句
   12. 书写链接地址时, 须避免重定向，例如：`href="https://www.qq.com/"`, 即须在 URL 地址后面加上`/`
-  13. 省略外链资源 URL 协议部分: 省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免 Mixed Content 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略
+  13. 省略外链资源 URL 协议部分: 省略外链资源（图片及其他媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免 [Mixed Content](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content) 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略
+
+  ```html
+  <!-- Recommended -->
+  <script src="//www.w3cschool.cn/statics/js/autotrack.js"></script>
+
+  <!-- Not recommended -->
+  <script src="http://www.w3cschool.cn/statics/js/autotrack.js"></script>
+  ```
+
   14. `,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格
-  15. 运算符处换行时，运算符必须在新行的行首
-
-   ```html
-   <!-- Recommended -->
-   <script src="//www.w3cschool.cn/statics/js/autotrack.js"></script>
-
-   <!-- Not recommended -->
-   <script src="http://www.w3cschool.cn/statics/js/autotrack.js"></script>
-   ```
-
-  16. 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
+  15. 在运算符处换行时，运算符必须在新行的行首
+  16. 部分 VSCode eslint 配置[详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
+  17. 部分工具函数 [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/util.js)
+  18. 部分 IE Polyfill [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/compatible-ie.js)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
