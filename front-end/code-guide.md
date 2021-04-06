@@ -16,7 +16,7 @@
 
 ## :page_with_curl: Table of Contents
 
-1. [命名规范](#命名规范)
+1. [命名规范](#1.-命名规范)
 2. [基本原则](#基本原则)
 3. [缩进](#缩进)
 4. [注释](#注释)
@@ -43,7 +43,7 @@
 25. [PS](#PS)
 26. [常用模块命名](#常用模块命名)
 
-### 命名规范
+### 1. 命名规范
 
 - 项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号，例：`my-project-name`
 - CSS 文件命名: `suffix.css(.scss)`，共用 `global.css`，首页 `index.css`，其他依实际模块需求命名
@@ -235,7 +235,7 @@ const z = '<div id="test"></div>';
     }
 
     // best
-    // 如果只有两个返回值且需要简单的判断，最好使用 `三元表达式` 代替 if else
+    // 如果只有两个返回值且需要简单的判断，最好使用 `三元表达式` 代替 `if {} else {}`
     function foo() {
       return x === 0 ? x : y;
     }
@@ -873,7 +873,8 @@ if (typeof person === 'undefined') {
 
 ### 项目结构
 
-- 控制整体布局的文件放在 `layouts` 文件夹
+- 页面文件放在 `src/views` 文件夹
+- 控制整体布局的文件放在 `src/views/layouts` 文件夹
 - 一些独立的组件应放在 `src/components` 文件夹
 - 项目插件放在 `src/plugins` 文件夹
 
@@ -883,7 +884,7 @@ if (typeof person === 'undefined') {
 
   1. 文件最后保留一个空行
   2. 行尾不要有空白字符
-  3. 不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可
+  3. 不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可（待商榷）
   4. **简单的 `if {} else {}` 应用三元表达式来代替**
   5. 换行符统一用 'LF'
   6. 不要混用 tab 和 space
