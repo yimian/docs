@@ -10,7 +10,7 @@
 
 ***这里基于上面已有规范做一些特殊说明、修改、强调和归纳提炼，文档着重于 Javascript，更多信息请查看上面的链接***
 
-**下面的规范如有觉得不合理或有更好的建议，请提 PR 或联系田益铭**
+**下面的规范如有觉得不合理、有更好的建议、有新增部分，请提 PR 或联系田益铭**
 
 ------
 
@@ -24,31 +24,34 @@
 6. [换行、空行](#换行、空行)
 7. [留空](#留空)
 8. [括号](#括号)
-9. [常量](#常量)
-10. [变量命名](#变量)
-11. [函数命名](#函数命名)
-12. [解构赋值](#解构赋值)
-13. [对象](#对象)
-14. [数组](#数组)
-15. [迭代器](#迭代器)
-16. [控制语句 Control Statements](#控制语句-Control-Statements)
-17. [undefined](#undefined)
-18. [HTML](#HTML)
-19. [CSS](#CSS)
-20. [组件中的 HTML 格式](#组件中的-HTML-格式)
-21. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
-22. [Vue 组件命名 和 文件夹结构](#Vue-组件命名-和-文件夹结构)
-23. [项目结构](#项目结构)
-24. [PS](#PS)
-25. [常用模块命名](#常用模块命名)
+9. [比较运算符与相等](#比较运算符与相等)
+10. [常量](#常量)
+11. [变量](#变量)
+12. [函数](#函数)
+13. [解构赋值](#解构赋值)
+14. [对象](#对象)
+15. [数组](#数组)
+16. [迭代器](#迭代器)
+17. [控制语句 Control Statements](#控制语句-Control-Statements)
+18. [undefined](#undefined)
+19. [HTML](#HTML)
+20. [CSS](#CSS)
+21. [组件中的 HTML 格式](#组件中的-HTML-格式)
+22. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
+23. [Vue 组件命名 和 文件夹结构](#Vue-组件命名-和-文件夹结构)
+24. [项目结构](#项目结构)
+25. [PS](#PS)
+26. [常用模块命名](#常用模块命名)
 
 ### 命名规范
 
-- 项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号，比如：`my-project-name`
-- CSS 文件命名: `suffix.css(.scss)`, 共用 `global.css`, 首页 `index.css`, 其他依实际模块需求命名
-- JS 文件命名: `suffix.js`, 共用 `common.js`, 其他依实际模块需求命名
+- 项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号，例：`my-project-name`
+- CSS 文件命名: `suffix.css(.scss)`，共用 `global.css`，首页 `index.css`，其他依实际模块需求命名
+- JS 文件命名: `suffix.js`，共用 `common.js`，其他依实际模块需求命名
 - 有复数结构时，要采用复数命名法，比如说： scripts, styles, images, data-models
 - 以字母开头命名
+- 避免用一个字母命名，让你的命名有意义
+- JS 中不要用前置或后置下划线
 - 常用模块命名见文末
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
@@ -64,7 +67,7 @@
 Vue 项目：
 统一采用下面的形式
 
-（只有较特殊且针对单个组件的样式才应该放在组件里，其余的样式应该合理地放到 `styles` 文件夹里）
+（只有较特殊且针对单个组件的样式才应该放在组件里，其余样式应该合理地放到 `styles` 文件夹里）
 
 ```html
 <template>...</template>
@@ -76,7 +79,7 @@ Vue 项目：
 
 ### 缩进
 
-> 统一两个空格缩进（anyway: 不要使用 `Tab` 或者 `Tab`、空格混搭)。
+> 统一使用两个空格缩进（anyway: 不要使用 `Tab` 或者 `Tab`、空格混搭)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -89,8 +92,7 @@ Vue 项目：
 
     `<!--<div class="sell"></div>-->`
 
-  - JS
-  使用 `//`，且必**须独占一行**。
+  - JS 使用 `//`，且必**须独占一行**。
 
     `// is current tab`
 - 多行注释
@@ -118,17 +120,16 @@ Vue 项目：
    * @param {number=} p3 参数 3 的说明（可选）
    * @return {Object} 返回值描述
    */
-  function foo(p1, p2, p3) {
-    var p3 = p3 || 10;
+  function foo(p1, p2, p3 = 10) {
     return {
-      p1: p1,
-      p2: p2,
-      p3: p3,
+      p1,
+      p2,
+      p3,
     };
   }
   ```
 
-- 善用 `FIXME:` 和 `TODO:`
+- 善用 `FIXME:` 和 `TODO:`，用 `// FIXME:` 给问题做注释，用 `// TODO:` 去注释问题的解决方案
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -150,14 +151,14 @@ const z = '<div id="test"></div>';
 
 ### 换行、空行
 
-1. [对所有多行代码块使用大括号](https://github.com/airbnb/javascript#blocks)
+1. **[对所有多行代码块使用大括号](https://github.com/airbnb/javascript#blocks)**
 
   ```javascript
     // bad
     if (test)
       return false;
 
-    // good
+    // bad
     if (test) return false;
 
     // good
@@ -232,25 +233,25 @@ const z = '<div id="test"></div>';
         return z;
       }
     }
+
+    // best
+    // 如果只有两个返回值且需要简单的判断，最好使用 `三元表达式` 代替 if else
+    function foo() {
+      return x === 0 ? x : y;
+    }
+
+    // best
+    // 当 x 为 [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 时，返回 y
+    function foo() {
+      return x || y;
+    }
   ```
 
 2. 每行代码不超过 120 个字符
 3. 逻辑块之间加空行增加可读性
-4. 每个 `let`、`const` 只能声明一个变量，且变量声明后需要空行（当变量声明在代码块的最后一行时，则无需空行）
+4. 每个 `let`、`const` 只能声明一个变量，且`变量声明后需要空行`（当变量声明在代码块的最后一行时，则无需空行）
 5. 注释前需要加空行（当注释在代码块的第一行时，则无需空行）
 6. 文件最后保留一个空行
-
-  ```javascript
-  // bad
-  var hangModules = [],
-      missModules = [],
-      visited = {};
-
-  // good
-  var hangModules = [];
-  var missModules = [];
-  var visited = {};
-  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -273,7 +274,7 @@ const z = '<div id="test"></div>';
   }
 
   // good
-  for (let i = 0, j = arr.length; i < j; i += 1) {
+  for (let i = 0, len = arr.length; i < len; i += 1) {
     // Do something.
   }
   ```
@@ -282,13 +283,12 @@ const z = '<div id="test"></div>';
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-
 ### 括号
 
 下列关键字后必须有大括号（**即使代码块的内容只有一行**），且需要单独换行：
 
 ```basic
-`if` ,  `else`, `for`,  `while`, `do`, `switch`, `try`, `catch`,  `finally`,  `with`。
+`if` ,  `else`, `for`,  `while`, `do`, `switch`, `try`, `catch`,  `finally`,  `with`
 ```
 
 ```javascript
@@ -299,6 +299,110 @@ if (condition) doSomething();
 if (condition) {
   doSomething();
 }
+```
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+### [比较运算符与相等](https://github.com/airbnb/javascript#comparison-operators--equality)
+
+1. 用 `===` 和 `!==` 而不是 `==` 和 `!=`
+2. 布尔值要用缩写
+
+```javascript
+// bad
+if (isValid === true) {
+  // ...
+}
+
+// good
+if (isValid) {
+  // ...
+}
+
+// bad
+if (name) {
+  // ...
+}
+
+// good
+if (name !== '') {
+  // ...
+}
+
+// 有待商榷
+// bad
+if (collection.length) {
+  // ...
+}
+
+// good
+if (collection.length > 0) {
+  // ...
+}
+```
+
+- 三元表达式不应该嵌套，通常是单行表达式
+
+```javascript
+// bad
+const foo = maybe1 > maybe2
+  ? 'bar'
+  : value1 > value2 ? 'baz' : null;
+
+// split into 2 separated ternary expressions
+const maybeNull = value1 > value2 ? 'baz' : null;
+
+// better
+const foo = maybe1 > maybe2
+  ? 'bar'
+  : maybeNull;
+
+// best
+const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
+```
+
+- 避免不必要的三元表达式
+
+```javascript
+// bad
+const foo = a ? a : b;
+const bar = c ? true : false;
+const baz = c ? false : true;
+
+// good
+const foo = a || b;
+const bar = !!c;
+const baz = !c;
+```
+
+- 用圆括号来组合操作符。只有当标准的算术运算符（+, -, *, 和 /），并且它们的优先级显而易见时，才可以不用圆括号括起来
+
+```javascript
+// bad
+const foo = a && b < 0 || c > 0 || d + 1 === 0;
+
+// bad
+const bar = a ** b - 5 % d;
+
+// bad
+// 他人会陷入(a || b) && c 的迷惑中
+if (a || b && c) {
+  return d;
+}
+
+// good
+const foo = (a && b < 0) || c > 0 || (d + 1 === 0);
+
+// good
+const bar = (a ** b) - (5 % d);
+
+// good
+if (a || (b && c)) {
+  return d;
+}
+
+// good
+const bar = a + b / c * d;
 ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
@@ -320,9 +424,46 @@ const URL = 'https://www.google.com';
 ### 变量
 
 - 标准变量采用驼峰式命名
-- 常量全大写，用下划线连接
+- 为每个变量声明都用一个 `const` 或 `let`
+
+```javascript
+// bad
+let hangModules = [],
+    missModules = [],
+    visited = {};
+
+// good
+let hangModules = [];
+let missModules = [];
+let visited = {};
+```
+
+- 把 `const`s 和 `let`s 分组
+
+```javascript
+// bad
+let i, len, dragonball,
+    items = getItems(),
+    goSportsTeam = true;
+
+// bad
+let i;
+const items = getItems();
+let dragonball;
+const goSportsTeam = true;
+let len;
+
+// good
+const goSportsTeam = true;
+const items = getItems();
+let dragonball;
+let i;
+let length;
+```
+
 - 构造函数，第一个字母大写
 - `boolean` 类型的变量使用 `is` 或 `has` 开头
+- 不要使用一元自增自减运算符
 - `类名` 使用 `名词`
 
   ```javascript
@@ -330,21 +471,21 @@ const URL = 'https://www.google.com';
   }
   ```
 
-- 在你需要的地方声明变量，但是要放在合理的位置
+- 在你需要的地方再声明变量，但是要放在合理的位置
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-### 函数命名
+### 函数
 
 **命名规则** : 前缀为动词，使用 `动宾短语`，可读性强，见名晓义
 
-| 动词 | 含义                            | 返回值                                                |
-| ---- | ------------------------------- | ----------------------------------------------------- |
-| can  | 判断是否可执行某个动作 ( 权限 ) | 函数返回一个布尔值。true：可执行；false：不可执行     |
-| has  | 判断是否含有某个值              | 函数返回一个布尔值。true：含有此值；false：不含有此值 |
-| is   | 判断是否为某个值                | 函数返回一个布尔值。true：为某个值；false：不为某个值 |
+| 动词 | 含义                            | 返回值                                             |
+| ---- | ------------------------------ | ------------------------------------------------- |
+| can  | 判断是否可执行某个动作 ( 权限 )    | 函数返回一个布尔值。true：可执行；false：不可执行        |
+| has  | 判断是否含有某个值                | 函数返回一个布尔值。true：含有此值；false：不含有此值    |
+| is   | 判断是否为某个值                 | 函数返回一个布尔值。true：为某个值；false：不为某个值     |
 | get  | 获取某个值                      | 函数返回一个非布尔值                                  |
-| set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象            |
+| set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象                |
 
 ```javascript
 // 是否可编辑
@@ -357,6 +498,21 @@ function getTitle() {
   return this.name;
 }
 ```
+
+- 函数参数不要使用 `arguments`，使用 `...` 代替
+
+  ```javascript
+  // bad
+  function concatenateAll() {
+    const args = Array.prototype.slice.call(arguments);
+    return args.join('');
+  }
+
+  // good
+  function concatenateAll(...args) {
+    return args.join('');
+  }
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -396,7 +552,6 @@ function getTitle() {
   ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
-
 
 ### 对象
 
@@ -457,7 +612,7 @@ const item = {
 ```
 
 4. 只对非法标识符的属性使用引号
-5. 优先使用对象展开运算符 `...` 来做对象浅拷贝而不是使用 `Object.assign`
+5. 优先使用对象展开运算符 `...` 来做对象`浅拷贝`而不是使用 `Object.assign`
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -491,7 +646,7 @@ items.push('test');
 ```javascript
 const foo = document.querySelectorAll('.foo');
 
-// good
+// bad
 const nodes = Array.from(foo);
 
 // best
@@ -502,19 +657,21 @@ const nodes = [...foo];
 
 ### 迭代器
 
-不要使用 iterators，建议使用 JS 更高优先级的函数代替 `for-in` 或 `for-of` 循环，除非迫不得已
+不要使用 `iterators`，建议使用 JS 更高优先级的函数代替 `for-in` 或 `for-of` 循环，除非迫不得已
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
 
 // bad
 let sum = 0;
+
 for (let num of numbers) {
   sum += num;
 }
 
 // good
 let sum = 0;
+
 numbers.forEach(num => sum += num);
 
 // better
@@ -574,7 +731,7 @@ const sum = numbers.reduce((total, num) => total + num, 0);
   }
   ```
 
-  在 `if / else / for / do / while` 语句中，即使只有一行，也不得省略块 `{...}`
+  **在 `if / else / for / do / while` 语句中，即使只有一行，也不得省略块 `{...}`**
 
   ```javascript
   // bad
@@ -590,13 +747,11 @@ const sum = numbers.reduce((total, num) => total + num, 0);
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
-
-
 ### undefined
 
-  永远不要直接使用 `undefined` 进行变量判断；
+  永远不要直接使用 `undefined` 进行变量判断
 
-  使用 `typeof` 和字符串 `undefined` 对变量进行判断。
+  使用 `typeof` 和字符串 `undefined` 对变量进行判断
 
 ```javascript
 // bad
@@ -614,12 +769,13 @@ if (typeof person === 'undefined') {
 
 ### HTML
 
-  1. HTML 属性值使用双引号
-  2. 自闭合（self-closing）标签，无需闭合 ( 例如：img、input、br、hr 等 )
-  3. 充分利用 HTML 自身属性及样式继承原理减少代码量
-  4. 尽量减少标签数量
-  5. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式;
-  6. HTML 属性应该按照特定的顺序出现以保证易读
+  1. 元素 id 必须保证页面唯一
+  2. HTML 属性值使用双引号
+  3. 自闭合（self-closing）标签，无需闭合 ( 例如：img、input、br、hr 等 )
+  4. 充分利用 HTML 自身属性及样式继承原理减少代码量
+  5. 尽量减少标签数量
+  6. 需要为 HTML 元素添加自定义属性的时候, 以 `data-` 为前缀来添加自定义属性，避免使用其他命名方式
+  7. HTML 属性应该按照特定的顺序出现以保证易读
       1. id
       2. class
       3. name
@@ -628,28 +784,27 @@ if (typeof person === 'undefined') {
       6. placeholder, title, alt
       7. aria-*, role
       8. required, readonly, disabled
-  7. 字符编码 `<meta charset="utf-8">`
-  8. 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
-  9. IE 兼容模式 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
-  10. 响应式 `<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">`
+  8. 字符编码 `<meta charset="utf-8">`
+  9. 无需使用 `@charset` 指定样式表的编码，它默认为 `UTF-8`
+  10. IE 兼容模式 `<meta http-equiv="X-UA-Compatible" content="IE=edge">`
+  11. 响应式 `<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">`
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
-
 
 ### CSS
 
   1. class 应以功能或内容命名，不以表现形式命名
   2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
-  3. 省略 "0" 值后面的单位。不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
+  3. 省略 "0" 值后面的单位，不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
   4. 代码缩进与格式: 每个 CSS 属性声明后都要加分号，在紧跟属性名的冒号后使用一个空格
   5. 减少选择器的长度（深度）
-  6. 样式名不能包含 ad、guanggao、ads、gg 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
+  6. 样式名不能包含 `ad`、`guanggao`、`ads`、`gg` 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### 组件中的 HTML 格式
 
-  组件元素有多个属性时闭合标志应单独占一行
+  组件元素有多个属性时闭合标志应`单独占一行`
 
 ```html
 <template>
@@ -683,7 +838,7 @@ if (typeof person === 'undefined') {
 
 ### 引入 CSS 和 JavaScript 文件
 
-​   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值。
+​   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -720,6 +875,7 @@ if (typeof person === 'undefined') {
 
 - 控制整体布局的文件放在 `layouts` 文件夹
 - 一些独立的组件应放在 `src/components` 文件夹
+- 项目插件放在 `src/plugins` 文件夹
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -732,15 +888,14 @@ if (typeof person === 'undefined') {
   5. 换行符统一用 'LF'
   6. 不要混用 tab 和 space
   7. 书写代码前, 考虑并提高样式重复使用率
-  8. 书写链接地址时, 必须避免重定向，例如：`href="https://www.qq.com/"`, 即须在URL地址后面加上`/`
-  9. 不要用隐含的类型转换
-  10. 用 `parseInt()` 进行数字转换
-  11. 构造器首字母大写
-  12. 尽量不要用位运算、`continue` 语句
+  8. 不要用隐含的类型转换
+  9. 用 `parseInt()` 进行数字转换
+  10. 构造器首字母大写
+  11. 尽量不要用位运算、`continue` 语句
+  12. 书写链接地址时, 须避免重定向，例如：`href="https://www.qq.com/"`, 即须在 URL 地址后面加上`/`
   13. 省略外链资源 URL 协议部分: 省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免 Mixed Content 问题，减小文件字节数。其它协议（ftp 等）的 URL 不省略
-  14. 使用 === 和 !== 而非 == 和 !=
-  15. `,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格
-  16. 运算符处换行时，运算符必须在新行的行首
+  14. `,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格
+  15. 运算符处换行时，运算符必须在新行的行首
 
    ```html
    <!-- Recommended -->
@@ -750,22 +905,7 @@ if (typeof person === 'undefined') {
    <script src="http://www.w3cschool.cn/statics/js/autotrack.js"></script>
    ```
 
-  17. 函数参数不要使用 `arguments`，选择 Rest 使用 `...` 代替
-
-  ```javascript
-  // bad
-  function concatenateAll() {
-    const args = Array.prototype.slice.call(arguments);
-    return args.join('');
-  }
-
-  // good
-  function concatenateAll(...args) {
-    return args.join('');
-  }
-  ```
-
-  18. 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
+  16. 部分 VSCode eslint [配置详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
