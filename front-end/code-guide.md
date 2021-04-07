@@ -867,8 +867,26 @@ if (condition) {
     <!-- 与自定义元素规范不兼容 -->
     <slider />
     ```
+3. [基础组件名](https://cn.vuejs.org/v2/style-guide/#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+  应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 Base、App 或 V
+4. [单例组件名](https://cn.vuejs.org/v2/style-guide/#%E5%8D%95%E4%BE%8B%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+  只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性
+5. [紧密耦合的组件名](https://cn.vuejs.org/v2/style-guide/#%E7%B4%A7%E5%AF%86%E8%80%A6%E5%90%88%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+  和父组件紧密耦合的子组件应该以父组件名作为前缀命名
+6. [模板中的组件名大小写](https://cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)（待商榷）
+  对于绝大多数项目来说，在单文件组件和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的
+7. [完整单词的组件名](https://cn.vuejs.org/v2/style-guide/#%E5%AE%8C%E6%95%B4%E5%8D%95%E8%AF%8D%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+  组件名应该倾向于完整单词而不是缩写
+8. [多个 attribute 的元素](https://cn.vuejs.org/v2/style-guide/#%E5%A4%9A%E4%B8%AA-attribute-%E7%9A%84%E5%85%83%E7%B4%A0%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+  多个 attribute 的元素应该分多行撰写，每个 attribute 一行
+9. [组件/实例的选项的顺序推荐](https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6-%E5%AE%9E%E4%BE%8B%E7%9A%84%E9%80%89%E9%A1%B9%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8E%A8%E8%8D%90)
+  组件/实例的选项应该有统一的顺序
+10. [元素 attribute 的顺序推荐](https://cn.vuejs.org/v2/style-guide/#%E5%85%83%E7%B4%A0-attribute-%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8E%A8%E8%8D%90)
+  元素 (包括组件) 的 attribute 应该有统一的顺序
+11. [组件/实例选项中的空行推荐](https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6-%E5%AE%9E%E4%BE%8B%E9%80%89%E9%A1%B9%E4%B8%AD%E7%9A%84%E7%A9%BA%E8%A1%8C%E6%8E%A8%E8%8D%90)
+  你可能想在多个 property 之间增加一个空行，特别是在这些选项一屏放不下，需要滚动才能都看到的时候。
 
-3. [组件-实例的选项的顺序推荐](https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6-%E5%AE%9E%E4%BE%8B%E7%9A%84%E9%80%89%E9%A1%B9%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8E%A8%E8%8D%90)
+  当你的组件开始觉得密集或难以阅读时，在多个 property 之间添加空行可以让其变得容易。在一些诸如 Vim 的编辑器里，这样格式化后的选项还能通过键盘被快速导航
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
