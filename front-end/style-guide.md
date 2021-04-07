@@ -332,8 +332,7 @@ if (condition) {
     // ...
   }
 
-  // 有待商榷
-  // bad or good?
+  // bad
   if (collection.length) {
     // ...
   }
@@ -488,6 +487,7 @@ if (condition) {
 | is   | 判断是否为某个值                 | 函数返回一个布尔值。true：为某个值；false：不为某个值     |
 | get  | 获取某个值                      | 函数返回一个非布尔值                                  |
 | set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象                |
+| handler | 事件处理函数                  | 事件处理函数添加 `handler` 后缀                       |
 
   ```javascript
   // 是否可编辑
@@ -876,7 +876,9 @@ if (condition) {
   **只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性**
 5. [紧密耦合的组件名](https://cn.vuejs.org/v2/style-guide/#%E7%B4%A7%E5%AF%86%E8%80%A6%E5%90%88%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
   和父组件紧密耦合的子组件应该以父组件名作为前缀命名
-6. [模板中的组件名大小写](https://cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)（待商榷）
+6. [模板中的组件名大小写](https://cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+  我们日常项目中基本不会使用 DOM 模板，这里规定在单文件组件和字符串模板中**组件名总是使用 PascalCase**
+
   对于绝大多数项目来说，在单文件组件和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的
 7. [完整单词的组件名](https://cn.vuejs.org/v2/style-guide/#%E5%AE%8C%E6%95%B4%E5%8D%95%E8%AF%8D%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
   **组件名应该倾向于完整单词而不是缩写**
@@ -906,7 +908,7 @@ if (condition) {
 
   1. 文件最后保留一个空行
   2. 行尾不要有空白字符
-  3. 不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可（待商榷）
+  3. ~~不要使用 `str.length !== 0` 或 `str.length > 0`  直接使用 `str.length` 即可~~
   4. **简单的 `if {} else {}` 应用三元表达式来代替**
   5. 换行符统一用 'LF'
   6. 不要混用 tab 和 space
