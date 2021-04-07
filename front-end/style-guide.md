@@ -80,13 +80,14 @@ Vue 项目：
 
 ### 缩进
 
-> 统一使用**两个空格**缩进（anyway: 不要使用 `Tab` 或者 `Tab`、空格混搭)
+  统一使用**两个空格**缩进（anyway: 不要使用 `Tab` 或者 `Tab`、空格混搭)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### [注释](https://github.com/airbnb/javascript#comments)
 
 **注释须为单独一行**，不可与业务代码同行
+
 - 单行注释
 
   缩进与下一行被注释说明的代码一致
@@ -308,7 +309,7 @@ if (condition) {
 ### [比较运算符与相等](https://github.com/airbnb/javascript#comparison-operators--equality)
 
 1. 用 `===` 和 `!==` 而不是 `==` 和 `!=`
-2. 布尔值要用缩写
+2. **布尔值要用缩写**
 
   ```javascript
   // bad
@@ -363,7 +364,7 @@ if (condition) {
   const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
   ```
 
-4. 避免不必要的三元表达式
+4. **避免不必要的三元表达式**
 
   ```javascript
   // bad
@@ -426,7 +427,7 @@ if (condition) {
 ### 变量
 
 1. 标准变量采用驼峰式命名
-2. 为每个变量声明都单独用一个 `const` 或 `let`
+2. **为每个变量声明都单独用一个 `const` 或 `let`**
 
   ```javascript
   // bad
