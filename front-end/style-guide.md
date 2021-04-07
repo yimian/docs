@@ -45,8 +45,8 @@
 
 ### 命名规范
 
-- 项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号，例：`my-project-name`
-- 前后端分离的项目，前端项目的命名后缀须带上 `-fe`，例：`oneload-fe`
+- **项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号**，例：`my-project-name`
+- **前后端分离的项目，前端项目的命名后缀须带上 `-fe`**，例：`oneload-fe`
 - CSS 文件命名: `suffix.css(.scss)`，共用 `global.css`，首页 `index.css`，其他依实际模块需求命名
 - JS 文件命名: `suffix.js`，共用 `common.js`，其他依实际模块需求命名
 - 有复数结构时，要采用复数命名法，比如说： scripts, styles, plugins, images, data-models
@@ -86,6 +86,7 @@ Vue 项目：
 
 ### [注释](https://github.com/airbnb/javascript#comments)
 
+**注释须为单独一行**，不可与业务代码同行
 - 单行注释
 
   缩进与下一行被注释说明的代码一致
@@ -331,7 +332,7 @@ if (condition) {
   }
 
   // 有待商榷
-  // bad or good
+  // bad or good?
   if (collection.length) {
     // ...
   }
