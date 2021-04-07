@@ -480,14 +480,20 @@ if (condition) {
 
 **命名规则** : 前缀为动词，使用 `动宾短语`，可读性强，见名晓义
 
-| 动词 | 含义                            | 返回值                                             |
+| 动词 | 含义                            | 返回值/备注                                         |
 | ---- | ------------------------------ | ------------------------------------------------- |
 | can  | 判断是否可执行某个动作 ( 权限 )    | 函数返回一个布尔值。true：可执行；false：不可执行        |
 | has  | 判断是否含有某个值                | 函数返回一个布尔值。true：含有此值；false：不含有此值    |
 | is   | 判断是否为某个值                 | 函数返回一个布尔值。true：为某个值；false：不为某个值     |
 | get  | 获取某个值                      | 函数返回一个非布尔值                                  |
 | set  | 设置某个值                      | 无返回值、返回是否设置成功或者返回链式对象                |
-| handler | 事件处理函数                  | 事件处理函数添加 `handler` 后缀                       |
+| handle | 事件处理函数                  | 事件处理函数添加 `handle` 前缀                        |
+| show | 显示                           | 函数返回一个布尔值：true                              |
+| hide | 隐藏                           | 函数返回一个布尔值：false                             |
+| read | 接口：获取数据(对应：GET)         | 获取到的数据                                         |
+| create | 接口：添加数据(对应：POST)      | 添加数据                                            |
+| update | 接口：更新数据(对应：UPDATE)    | 更新数据                                            |
+| delete | 接口：删除数据(对应：DELETE)    | 删除数据                                            |
 
   ```javascript
   // 是否可编辑
@@ -897,10 +903,20 @@ if (condition) {
 
 ### 项目结构
 
-- 页面文件放在 `src/views` 文件夹
-- 控制整体布局的文件放在 `src/views/layouts` 文件夹
-- 一些独立的组件应放在 `src/components` 文件夹
+- 页面组件应放在 `src/views` 文件夹
+  - 整体布局的页面组件应放在 `src/views/layouts` 文件夹
+  - 登录、权限的页面组件应放在 `src/views/auth` 文件夹
+  - 通用的页面组件应放在 `src/views/common` 文件夹
+  - 管理员属性的页面组件应放在 `src/views/admin` 文件夹
+- 独立的组件文件应放在 `src/components` 文件夹
+  - '工具'组件应放在 `src/components/widgets` 文件夹
+  - '混入'组件应放在 `src/components/mixins` 文件夹
+- 工具函数应放在 `src/utils` 文件夹
 - 项目插件放在 `src/plugins` 文件夹
+- API 放在 `src/api` 文件夹
+- 静态文件放在 `src/assets` 文件夹
+- 国际化文件放在 `src/i18n` 文件夹
+- 其余还有 `src/router`、`src/store` 等
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
