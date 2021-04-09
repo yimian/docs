@@ -203,7 +203,9 @@ Vue 项目：
       lastName: 'Nightingale',
   +   inventorOf: ['coxcomb chart', 'modern nursing'],
   };
+  ```
 
+  ```javascript
   // bad
   const hero = {
     firstName: 'Dana',
@@ -244,7 +246,7 @@ Vue 项目：
     // does nothing
   }
 
-  // good (注意，逗号不应出现在使用了 ... 操作符后的参数后面)
+  // good (注意：逗号不应出现在使用了 ... 操作符的参数后面)
   function createHero(
     firstName,
     lastName,
@@ -268,7 +270,7 @@ Vue 项目：
     inventorOf,
   );
 
-  // good  (注意，逗号不应出现在使用了 ... 操作符后的参数后面)
+  // good  (注意：逗号不应出现在使用了 ... 操作符的参数后面)
   createHero(
     firstName,
     lastName,
