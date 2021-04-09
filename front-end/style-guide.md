@@ -152,7 +152,7 @@ Vue 项目：
 
 3. [**逗号**](https://github.com/airbnb/javascript#commas) eslint: [comma-style](https://eslint.org/docs/rules/comma-style.html)
 
-  1. **不要前置逗号**
+  - **不要前置逗号**
 
   ```javascript
   // bad
@@ -186,7 +186,7 @@ Vue 项目：
   };
   ```
 
-  2. **添加额外的结尾逗号** eslint: [comma-dangle](https://eslint.org/docs/rules/comma-dangle.html)
+  - **添加额外的结尾逗号** eslint: [comma-dangle](https://eslint.org/docs/rules/comma-dangle.html)
 
   ```diff
   // bad - git diff without trailing comma
