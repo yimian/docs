@@ -150,6 +150,133 @@ Vue 项目：
   const z = '<div id="test"></div>';
   ```
 
+3. [**逗号**](https://github.com/airbnb/javascript#commas) eslint: [comma-style](https://eslint.org/docs/rules/comma-style.html)
+
+  1. **不要前置逗号**
+
+  ```javascript
+  // bad
+  const story = [
+      once
+    , upon
+    , aTime
+  ];
+
+  // good
+  const story = [
+    once,
+    upon,
+    aTime,
+  ];
+
+  // bad
+  const hero = {
+      firstName: 'Ada'
+    , lastName: 'Lovelace'
+    , birthYear: 1815
+    , superPower: 'computers'
+  };
+
+  // good
+  const hero = {
+    firstName: 'Ada',
+    lastName: 'Lovelace',
+    birthYear: 1815,
+    superPower: 'computers',
+  };
+  ```
+
+  2. **添加额外的结尾逗号** eslint: [comma-dangle](https://eslint.org/docs/rules/comma-dangle.html)
+
+  ```diff
+  // bad - git diff without trailing comma
+  const hero = {
+      firstName: 'Florence',
+  -   lastName: 'Nightingale'
+  +   lastName: 'Nightingale',
+  +   inventorOf: ['coxcomb chart', 'modern nursing']
+  };
+
+  // good - git diff with trailing comma
+  const hero = {
+      firstName: 'Florence',
+      lastName: 'Nightingale',
+  +   inventorOf: ['coxcomb chart', 'modern nursing'],
+  };
+
+  // bad
+  const hero = {
+    firstName: 'Dana',
+    lastName: 'Scully'
+  };
+
+  const heroes = [
+    'Batman',
+    'Superman'
+  ];
+
+  // good
+  const hero = {
+    firstName: 'Dana',
+    lastName: 'Scully',
+  };
+
+  const heroes = [
+    'Batman',
+    'Superman',
+  ];
+
+  // bad
+  function createHero(
+    firstName,
+    lastName,
+    inventorOf
+  ) {
+    // does nothing
+  }
+
+  // good
+  function createHero(
+    firstName,
+    lastName,
+    inventorOf,
+  ) {
+    // does nothing
+  }
+
+  // good (注意，逗号不应出现在使用了 ... 操作符后的参数后面)
+  function createHero(
+    firstName,
+    lastName,
+    inventorOf,
+    ...heroArgs
+  ) {
+    // does nothing
+  }
+
+  // bad
+  createHero(
+    firstName,
+    lastName,
+    inventorOf
+  );
+
+  // good
+  createHero(
+    firstName,
+    lastName,
+    inventorOf,
+  );
+
+  // good  (注意，逗号不应出现在使用了 ... 操作符后的参数后面)
+  createHero(
+    firstName,
+    lastName,
+    inventorOf,
+    ...heroArgs
+  )
+  ```
+
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### 换行、空行
