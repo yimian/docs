@@ -7,7 +7,7 @@
 已有规范:
 
 1. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
-2. [Vue 风格指南](https://cn.vuejs.org/v2/style-guide/)
+2. [Vue 风格指南](https://vuejs.org/v2/style-guide/)
 3. [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
 
 **下面的规范如有觉得不合理、有更好的建议、有新增部分，请提 PR 或联系田益铭**
@@ -464,7 +464,7 @@ if (condition) {
   ```
 
 4. 构造函数，第一个字母大写
-5. 不要使用一元自增自减运算符
+5. 不要使用一元自增自减运算符。eslint: [no-plusplus](https://eslint.org/docs/rules/no-plusplus)
 6. 在你需要的地方再声明变量，但是要放在合理的位置
 7. `boolean` 类型的变量使用 `is` 或 `has` 开头
 8. `类名` 使用 `名词`
@@ -905,7 +905,7 @@ if (condition) {
 
 - 页面组件应放在 `src/views` 文件夹
   - 整体布局的页面组件应放在 `src/views/layouts` 文件夹
-  - 登录、权限的页面组件应放在 `src/views/auth` 文件夹
+  - 登录、系统权限的页面组件应放在 `src/views/auth` 文件夹
   - 通用的页面组件应放在 `src/views/common` 文件夹
   - 管理员属性的页面组件应放在 `src/views/admin` 文件夹
 - 独立的组件文件应放在 `src/components` 文件夹
