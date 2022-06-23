@@ -24,7 +24,7 @@ multiple scopes are supported (current delimiter options: "/", "\" and ",")
 ### 1.1 Type
 
 [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional)
-[type-enum](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#type-enum):
+#### 1.1.1 [type-enum](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#type-enum):
 
 - build: 构造工具的或者外部依赖的改动
 - chore：不修改 src 或者 test 的其余修改
@@ -41,7 +41,9 @@ multiple scopes are supported (current delimiter options: "/", "\" and ",")
 - ui: css 样式改动相关
 - wip: 正在开发中尚未完成（work in process）
 
-#### 1.1.1 [commitlint configuration](https://commitlint.js.org/#/reference-configuration?id=configuration)
+#### 1.1.2 [commitlint configuration](https://commitlint.js.org/#/reference-configuration?id=configuration)
+
+`commitlint.config.ts`:
 
 ```typescript
 import type { UserConfig } from '@commitlint/types'
@@ -130,3 +132,4 @@ BREAKING CHANGE: The 'foo' option has been removed.
 ## e.g.
 
 1. [Angular commits](https://github.com/angular/angular/commits/main)
+2. [Vue commits](https://github.com/vuejs/core/commits/main)
