@@ -1073,7 +1073,9 @@ if (condition) {
   ```
 
   14. `,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格
-  15. **在运算符处换行时，运算符必须在新行的行首**
+  15. 在运算符处换行时，建议把运算符放在新行的**行首**`'operator-linebreak': ['error', 'before']`，但考虑到目前 [Prettier](https://prettier.io/) 的限制，运算符可以放在句尾，详见：
+    1. [Placing operators at the beginning of lines #3806](https://github.com/prettier/prettier/issues/3806)
+    2. [JS: Break lines before binary operators (fixes #3806) #7111](https://github.com/prettier/prettier/pull/7111)
   16. 部分 VSCode eslint 配置[详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
   17. 部分工具函数 [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/util.js)
   18. 部分 IE Polyfill [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/compatible-ie.js)
