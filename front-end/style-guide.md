@@ -1,16 +1,19 @@
-# 代码规范
+# 前端代码规范
 
-**代码规范旨在增强团队开发协作、提升代码质量、统一团队成员 JS 语法风格和书写习惯，减少程序出错的概率。让代码容易被理解和被维护，便于成员间能以更低的成本（时间、精力。。。）熟悉对方的代码。下面文档中也包含了部分 ES6 的语法规范和最佳实践。**
+**代码规范旨在增强团队开发协作、提升代码质量、统一团队代码的语法风格和书写习惯，降低程序出错的概率。让代码易于被理解和维护，便于成员间能以更低成本（时间、精力。。。）熟悉对方的代码。以下包含语法规范和最佳实践。**
 
-***这里基于已有规范做一些特殊说明、修改、强调和归纳提炼，文档着重于 JavaScript，更多信息请查看下面的规范***
+***这里基于已有规范做一些特殊说明、修改、强调和归纳提炼，文档着重于 JavaScript/[TypeScript](https://www.typescriptlang.org/)，更多信息请查看下面的规范***
 
-已有规范:
+参考:
 
 1. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
-2. [Vue 风格指南](https://vuejs.org/v2/style-guide/)
+2. [Vue 风格指南](https://v3.cn.vuejs.org/style-guide/)
 3. [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
+4. [TypeScript ESLint](https://typescript-eslint.io/)
+5. [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript)
+6. [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
-**下面的规范如有觉得不合理、有更好的建议、有新增部分，请提 PR 或联系田益铭**
+**对规范有更好的建议、有新增部分，请提 PR 或直接联系田益铭**
 
 ------
 
@@ -45,14 +48,13 @@
 
 ### 命名规范
 
-- **项目、文件命名统一采用小写英文字母，多个单词的使用中划线 '-' 连接，禁止包含空格和特殊符号**，例：`my-project-name`
+- **项目、文件命名统一采用小写英文字母，多个单词使用中划线 '-' 连接，禁止包含空格和特殊符号**，例：`my-project-name`
 - **前后端分离的项目，前端项目的命名后缀须带上 `-fe`**，例：`oneload-fe`
 - CSS 文件命名: `suffix.css(.scss)`，共用 `global.css`，首页 `index.css`，其他依实际模块需求命名
 - JS 文件命名: `suffix.js`，共用 `common.js`，其他依实际模块需求命名
 - 有复数结构时，要采用复数命名法，比如说： scripts, styles, plugins, images, data-models
 - 以字母开头命名
 - 避免只用一个字母来命名，应该让你的命名更有意义
-- JS 中不要用前置或后置下划线
 - 常用模块命名见[文末](#常用模块命名)
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
