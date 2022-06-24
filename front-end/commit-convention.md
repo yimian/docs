@@ -21,7 +21,7 @@ and [Commit Message Header](https://github.com/angular/angular/blob/main/CONTRIB
 - `<type>` 和 `<subject>` 是必填字段, `(<scope>)` 字段是可选的.
 - 可以填多个 `<scope>`（用 `', '` 分隔）
 - `<type>` 和 `<scope>` 使用小写字符
-- 更多限制请参考：[@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional)
+- 更多默认设置请参考：[@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional)
 
 ### 1.1 Type
 #### 1.1.1 [type-enum](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#type-enum):
@@ -138,5 +138,6 @@ BREAKING CHANGE: The 'foo' option has been removed.
 <!-- markdownlint-disable-next-line -->
 ## e.g.
 
-1. [Angular commits](https://github.com/angular/angular/commits/main)
-2. [Vue commits](https://github.com/vuejs/core/commits/main)
+1. [Angular](https://github.com/angular/angular/commits/main)
+2. [Vue.js](https://github.com/vuejs/core/commits/main)
+3. [Element Plus](https://github.com/element-plus/element-plus/commits/dev)
