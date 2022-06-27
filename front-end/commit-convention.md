@@ -27,17 +27,17 @@ and [Commit Message Header](https://github.com/angular/angular/blob/main/CONTRIB
 #### 1.1.1 [type-enum](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#type-enum):
 
 - build: 构建工具或外部依赖的改动
-- chore: 其余修改（不适用于已有 Type 的改动）
+- chore: 其他修改（不适用于已有 Type 的改动）
 - ci: 与 CI（持续集成服务）有关的改动
-- docs: 文档修改（documentation）
-- feat: 新功能（feature）
-- fix: bug 修复
+- docs: 文档更新（documentation）
+- feat: 新特性或功能（feature）
+- fix: 缺陷修复
 - perf: 优化相关，如：提升性能、体验等
-- refactor: 代码重构
+- refactor: 代码重构，不引入新功能和缺陷修复
 - revert: 回滚到上一个版本，执行 `git revert` 打印的 message
 - release: 版本发布
-- style: 代码格式，不影响代码含义的改动，如：去掉空格、改变缩进、增删分号
-- test: 新增测试或修改现有测试
+- style: 代码风格或者组件样式更新，不影响代码含义的改动，如：去掉空格、改变缩进、增删分号
+- test: 单元测试，新增测试或修改现有测试
 - ui: CSS 样式相关改动
 - wip: 正在开发中尚未完成（work in process）
 
@@ -134,6 +134,8 @@ BREAKING CHANGE: The 'foo' option has been removed.
 
 - [cz-cli](https://github.com/commitizen/cz-cli): The commitizen command line utility.
 - [cz-customizable](https://github.com/leoforfree/cz-customizable): A customizable commitizen adapter for [cz-cli](https://github.com/commitizen/cz-cli)(or standalone util)
+
+## 4. [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 <!-- markdownlint-disable-next-line -->
 ## e.g.
