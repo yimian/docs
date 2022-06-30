@@ -102,6 +102,7 @@ Vue 项目：
   - JS 使用 `//`，且必**须独占一行**。
 
     `// is current tab`
+  
 - 多行注释
   - HTML
 
@@ -113,8 +114,35 @@ Vue 项目：
   </div> -->
   ```
 
-  - 尽量避免使用 `/*...*/` 这样的多行注释。有多行注释内容时，**使用多个单行注释**
+  - 使用`/** …… */ `进行多行注释
 
+  ```javascript
+  // bad
+  // make() returns a new element
+  // based on the passed in tag name
+  //
+  // @param {String} tag
+  // @return {Element} element
+  function make(tag) {
+  
+    // ...
+  
+    return element;
+  }
+  
+  // good
+  /**
+   * make() returns a new element
+   * based on the passed-in tag name
+   */
+  function make(tag) {
+  
+    // ...
+  
+    return element;
+  }
+  ```
+  
 - 函数注释
 
   ```javascript
