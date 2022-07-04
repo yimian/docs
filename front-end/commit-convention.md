@@ -39,6 +39,7 @@ and [Commit Message Header](https://github.com/angular/angular/blob/main/CONTRIB
 - style: 代码风格或者组件样式更新，不影响代码含义的改动，如：去掉空格、改变缩进、增删分号
 - test: 单元测试，新增测试或修改现有测试
 - ui: CSS 样式相关改动
+- workflow: 工作流相关，如：ESLint、流程相关脚本等
 - wip: 正在开发中尚未完成（work in process）
 
 #### 1.1.2 [commitlint configuration](https://commitlint.js.org/#/reference-configuration?id=configuration)
