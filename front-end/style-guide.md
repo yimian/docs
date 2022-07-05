@@ -40,14 +40,16 @@
 16. [迭代器](#迭代器)
 17. [控制语句 Control Statements](#控制语句-Control-Statements)
 18. [undefined](#undefined)
-19. [HTML](#HTML)
-20. [CSS](#CSS)
-21. [组件中的 HTML 格式](#组件中的-HTML-格式)
-22. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
-23. [Vue 组件命名和结构](#Vue-组件命名和结构)
-24. [项目结构](#项目结构)
-25. [PS](#PS)
-26. [常用模块命名](#常用模块命名)
+19. [安全问题](#安全问题)
+20. [模块](#模块)
+21. [HTML](#HTML)
+22. [CSS](#CSS)
+23. [组件中的 HTML 格式](#组件中的-HTML-格式)
+24. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
+25. [Vue 组件命名和结构](#Vue-组件命名和结构)
+26. [项目结构](#项目结构)
+27. [PS](#PS)
+28. [常用模块命名](#常用模块命名)
 
 ### 命名规范
 
@@ -103,6 +105,7 @@ Vue 项目：
   - JS 使用 `//`，且必**须独占一行**。
 
     `// is current tab`
+  
 - 多行注释
   - HTML
 
@@ -114,8 +117,35 @@ Vue 项目：
   </div> -->
   ```
 
-  - 尽量避免使用 `/*...*/` 这样的多行注释。有多行注释内容时，**使用多个单行注释**
+  - 使用`/** …… */ `进行多行注释
 
+  ```javascript
+  // bad
+  // make() returns a new element
+  // based on the passed in tag name
+  //
+  // @param {String} tag
+  // @return {Element} element
+  function make(tag) {
+  
+    // ...
+  
+    return element;
+  }
+  
+  // good
+  /**
+   * make() returns a new element
+   * based on the passed-in tag name
+   */
+  function make(tag) {
+  
+    // ...
+  
+    return element;
+  }
+  ```
+  
 - 函数注释
 
   ```javascript
@@ -643,18 +673,68 @@ if (condition) {
 
 - 函数参数不要使用 `arguments`，使用 `...` 代替
 
-  ```javascript
-  // bad
-  function concatenateAll() {
-    const args = Array.prototype.slice.call(arguments);
-    return args.join('');
-  }
+```javascript
+// bad
+function concatenateAll() {
+const args = Array.prototype.slice.call(arguments);
+return args.join('');
+}
 
-  // good
-  function concatenateAll(...args) {
-    return args.join('');
+// good
+function concatenateAll(...args) {
+return args.join('');
+}
+```
+
+- 在代码块中，不要使用函数声明，而是函数表达式
+
+```javascript
+// bad
+if (currentUser) {
+  function test() {
+    console.log('Nope.');
   }
-  ```
+}
+
+// good
+let test;
+if (currentUser) {
+  test = () => {
+    console.log('Yup.');
+  };
+}
+```
+
+- 在闭包中，应该使用函数表达式+箭头函数，同上
+- 使用形参默认值
+
+```javascript
+// good
+function handleThings(opts = {}) {
+  // ...
+}
+```
+
+- 带默认值的形参应该往后方，这里跟ts的可选形参的位置规范是一样的
+
+```javascript
+// bad
+function handleThings(opts = {}, name) {
+  // ...
+}
+
+// good
+function handleThings(name, opts = {}) {
+  // ...
+}
+
+// And in TS
+function handleThings(name: NameType, opts?: OptionsType) {
+  // ...
+}
+```
+
+
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -678,11 +758,14 @@ if (condition) {
     return `${firstName} ${lastName}`;
   }
 
+	// 形参直接通过结构赋值提取属性
   // best
   function getFullName({ firstName, lastName }) {
     return `${firstName} ${lastName}`;
   }
 
+
+	// 使用解构赋值从数组中提取元素
   const arr = [1, 2, 3, 4];
 
   // bad
@@ -794,6 +877,30 @@ if (condition) {
   // best
   const nodes = [...foo];
   ```
+
+5. 利用`Array.from`转换类数组对象，注意区分可迭代对象和类数组对象
+
+```javascript
+const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
+
+// bad
+const arr = Array.prototype.slice.call(arrLike);
+
+// good
+const arr = Array.from(arrLike);
+```
+
+6. 利用`Array.from`进行mapping，而不是`...`，避免生成中间值
+
+```javascript
+// bad
+const baz = [...foo].map(bar);
+
+// good
+const baz = Array.from(foo, bar);
+```
+
+
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -909,6 +1016,39 @@ if (condition) {
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
+### 安全问题
+
+- 不要使用eval()函数执行string命令
+- 减少直接使用对html String解析的操作
+- URL尽量都先encode
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+​	
+
+### 模块
+
+- 按需引入
+- 不要重复引入同一个路径
+
+```javascript
+// bad
+import foo from 'foo';
+// … some other imports … //
+import { named1, named2 } from 'foo';
+
+// good
+import foo, { named1, named2 } from 'foo';
+
+// good
+import foo, {
+  named1,
+  named2,
+} from 'foo';
+```
+
+**[⬆ back to top](#page_with_curl-table-of-contents)**
+
+
 ### HTML
 
   1. 元素 id 必须保证页面唯一
@@ -979,7 +1119,7 @@ if (condition) {
 
 ### 引入 CSS 和 JavaScript 文件
 
-​   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值
+   根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 `type` 属性，因为 `text/css` 和 `text/javascript` 分别是它们的默认值
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -1011,24 +1151,24 @@ if (condition) {
     ```
 
 3. [基础组件名](https://cn.vuejs.org/v2/style-guide/#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-  **应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 Base、App 或 V**
+    **应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 Base、App 或 V**
 4. [单例组件名](https://cn.vuejs.org/v2/style-guide/#%E5%8D%95%E4%BE%8B%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-  **只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性**
+    **只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性**
 5. [紧密耦合的组件名](https://cn.vuejs.org/v2/style-guide/#%E7%B4%A7%E5%AF%86%E8%80%A6%E5%90%88%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-  和父组件紧密耦合的子组件应该以父组件名作为前缀命名
+    和父组件紧密耦合的子组件应该以父组件名作为前缀命名
 6. [模板中的组件名大小写](https://cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-  我们日常项目中基本不会使用 DOM 模板，这里规定在单文件组件和字符串模板中**组件名总是使用 PascalCase**
-  对于绝大多数项目来说，在单文件组件和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的
+    我们日常项目中基本不会使用 DOM 模板，这里规定在单文件组件和字符串模板中**组件名总是使用 PascalCase**
+    对于绝大多数项目来说，在单文件组件和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的
 7. [完整单词的组件名](https://cn.vuejs.org/v2/style-guide/#%E5%AE%8C%E6%95%B4%E5%8D%95%E8%AF%8D%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-  **组件名应该倾向于完整单词而不是缩写**
+    **组件名应该倾向于完整单词而不是缩写**
 8. [多个 attribute 的元素](https://cn.vuejs.org/v2/style-guide/#%E5%A4%9A%E4%B8%AA-attribute-%E7%9A%84%E5%85%83%E7%B4%A0%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-  多个 attribute 的元素应该分多行撰写，每个 attribute 一行
+    多个 attribute 的元素应该分多行撰写，每个 attribute 一行
 9. [组件/实例的选项的顺序推荐](https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6-%E5%AE%9E%E4%BE%8B%E7%9A%84%E9%80%89%E9%A1%B9%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8E%A8%E8%8D%90)
-  **组件/实例的选项应该有统一的顺序**
+    **组件/实例的选项应该有统一的顺序**
 10. [元素 attribute 的顺序推荐](https://cn.vuejs.org/v2/style-guide/#%E5%85%83%E7%B4%A0-attribute-%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8E%A8%E8%8D%90)
-  元素 (包括组件) 的 attribute 应该有统一的顺序
+    元素 (包括组件) 的 attribute 应该有统一的顺序
 11. [组件/实例选项中的空行推荐](https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6-%E5%AE%9E%E4%BE%8B%E9%80%89%E9%A1%B9%E4%B8%AD%E7%9A%84%E7%A9%BA%E8%A1%8C%E6%8E%A8%E8%8D%90)
-  你可能想在多个 property 之间增加一个空行，特别是在这些选项一屏放不下，需要滚动才能都看到的时候。
+    你可能想在多个 property 之间增加一个空行，特别是在这些选项一屏放不下，需要滚动才能都看到的时候。
 
   当你的组件开始觉得密集或难以阅读时，在多个 property 之间添加空行可以让其变得容易。在一些诸如 Vim 的编辑器里，这样格式化后的选项还能通过键盘被快速导航
 
@@ -1079,8 +1219,8 @@ if (condition) {
 
   14. `,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格
   15. 在运算符处换行时，建议把运算符放在新行的**行首**`'operator-linebreak': ['error', 'before']`，但考虑到目前 [Prettier](https://prettier.io/) 的限制，运算符可以放在句尾，详见：
-    1. [Placing operators at the beginning of lines #3806](https://github.com/prettier/prettier/issues/3806)
-    2. [JS: Break lines before binary operators (fixes #3806) #7111](https://github.com/prettier/prettier/pull/7111)
+        1. [Placing operators at the beginning of lines #3806](https://github.com/prettier/prettier/issues/3806)
+        2. [JS: Break lines before binary operators (fixes #3806) #7111](https://github.com/prettier/prettier/pull/7111)
   16. 部分 VSCode eslint 配置[详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
   17. 部分工具函数 [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/util.js)
   18. 部分 IE Polyfill [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/compatible-ie.js)
