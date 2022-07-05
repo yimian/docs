@@ -4,14 +4,17 @@
 
 ***这里基于已有规范做一些特殊说明、修改、强调和归纳提炼，文档着重于 JavaScript/[TypeScript](https://www.typescriptlang.org/)，更多信息请查看下面的规范***
 
-参考:
+### [ESLint Configuration Files](https://github.com/yimian/docs/blob/1.0.0/front-end/scripts/.eslintrc.cjs)
+
+#### 参考:
 
 1. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 2. [Vue 风格指南](https://v3.cn.vuejs.org/style-guide/)
 3. [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
 4. [TypeScript ESLint](https://typescript-eslint.io/)
-5. [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript)
-6. [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+5. [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
+6. [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript)
+7. [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
 **对规范有更好的建议、有新增部分，请提 PR 或直接联系田益铭**
 
