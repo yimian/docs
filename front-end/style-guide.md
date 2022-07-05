@@ -10,11 +10,14 @@
 
 1. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 2. [Vue 风格指南](https://v3.cn.vuejs.org/style-guide/)
-3. [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
-4. [TypeScript ESLint](https://typescript-eslint.io/)
-5. [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
-6. [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript)
-7. [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+3. [Vue Style Guide](https://vuejs.org/style-guide/)
+4. [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css)
+5. [TypeScript ESLint](https://typescript-eslint.io/)
+6. [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
+7. [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript)
+8. [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+
+PS: 上面的 `Vue` 代码指南相关文档，有些过时待后面更新
 
 **对规范有更好的建议、有新增部分，请提 PR 或直接联系田益铭**
 
@@ -105,7 +108,7 @@ Vue 项目：
   - JS 使用 `//`，且必**须独占一行**。
 
     `// is current tab`
-  
+
 - 多行注释
   - HTML
 
@@ -127,25 +130,25 @@ Vue 项目：
   // @param {String} tag
   // @return {Element} element
   function make(tag) {
-  
+
     // ...
-  
+
     return element;
   }
-  
+
   // good
   /**
    * make() returns a new element
    * based on the passed-in tag name
    */
   function make(tag) {
-  
+
     // ...
-  
+
     return element;
   }
   ```
-  
+
 - 函数注释
 
   ```javascript
@@ -1023,7 +1026,7 @@ const baz = Array.from(foo, bar);
 - URL尽量都先encode
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
-​	
+​
 
 ### 模块
 
