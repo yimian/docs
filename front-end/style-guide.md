@@ -718,7 +718,7 @@ function handleThings(opts = {}) {
 }
 ```
 
-- 带默认值的形参应该往后方，这里跟ts的可选形参的位置规范是一样的
+- 带默认值的形参应该往后方，这里跟 TS 的可选形参的位置规范是一样的
 
 ```javascript
 // bad
@@ -761,14 +761,14 @@ function handleThings(name: NameType, opts?: OptionsType) {
     return `${firstName} ${lastName}`;
   }
 
-	// 形参直接通过结构赋值提取属性
+  // 形参直接通过结构赋值提取属性
   // best
   function getFullName({ firstName, lastName }) {
     return `${firstName} ${lastName}`;
   }
 
 
-	// 使用解构赋值从数组中提取元素
+  // 使用解构赋值从数组中提取元素
   const arr = [1, 2, 3, 4];
 
   // bad
@@ -881,7 +881,7 @@ function handleThings(name: NameType, opts?: OptionsType) {
   const nodes = [...foo];
   ```
 
-5. 利用`Array.from`转换类数组对象，注意区分可迭代对象和类数组对象
+5. 利用 `Array.from` 转换类数组对象，注意区分可迭代对象和类数组对象
 
 ```javascript
 const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
@@ -893,7 +893,7 @@ const arr = Array.prototype.slice.call(arrLike);
 const arr = Array.from(arrLike);
 ```
 
-6. 利用`Array.from`进行mapping，而不是`...`，避免生成中间值
+6. 利用 `Array.from` 进行 mapping，而不是 `...`，避免生成中间值
 
 ```javascript
 // bad
@@ -902,8 +902,6 @@ const baz = [...foo].map(bar);
 // good
 const baz = Array.from(foo, bar);
 ```
-
-
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -1021,9 +1019,9 @@ const baz = Array.from(foo, bar);
 
 ### 安全问题
 
-- 不要使用eval()函数执行string命令
-- 减少直接使用对html String解析的操作
-- URL尽量都先encode
+- 不要使用 `eval()` 函数执行 string 命令
+- 减少直接使用对 HTML String 解析的操作
+- URL 尽量都先 encode
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 ​
@@ -1080,7 +1078,7 @@ import foo, {
 
   1. class 应以功能或内容命名，不以表现形式命名
   2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
-  3. 省略 "0" 值后面的单位，不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
+  3. 省略 '0' 值后面的单位，不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
   4. 代码缩进与格式: 每个 CSS 属性声明后都要加分号，在紧跟属性名的冒号后使用一个空格
   5. 减少选择器的长度（深度）
   6. 样式名不能包含 `ad`、`guanggao`、`ads`、`gg` 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
@@ -1222,8 +1220,8 @@ import foo, {
 
   14. `,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格
   15. 在运算符处换行时，建议把运算符放在新行的**行首**`'operator-linebreak': ['error', 'before']`，但考虑到目前 [Prettier](https://prettier.io/) 的限制，运算符可以放在句尾，详见：
-        1. [Placing operators at the beginning of lines #3806](https://github.com/prettier/prettier/issues/3806)
-        2. [JS: Break lines before binary operators (fixes #3806) #7111](https://github.com/prettier/prettier/pull/7111)
+      1. [Placing operators at the beginning of lines #3806](https://github.com/prettier/prettier/issues/3806)
+      2. [JS: Break lines before binary operators (fixes #3806) #7111](https://github.com/prettier/prettier/pull/7111)
   16. 部分 VSCode eslint 配置[详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
   17. 部分工具函数 [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/util.js)
   18. 部分 IE Polyfill [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/compatible-ie.js)
