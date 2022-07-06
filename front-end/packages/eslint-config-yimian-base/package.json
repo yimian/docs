@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-yimian-base",
+  "name": "@ym/eslint-config-yimian-base",
   "version": "1.0.0",
   "description": "Yimian's base Ts\\Vue3\\Js ESLint config",
   "main": "index.js",
@@ -29,21 +29,23 @@
     "styleguide"
   ],
   "author": "Yellin (huyelin@yimian.com.cn)",
-  "devDependencies": {
-    "@rushstack/eslint-patch": "^1.1.4",
+  "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
-    "eslint": "^7.32.0 || ^8.2.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-vue": "^8.7.1",
-    "prettier": "^2.7.1"
+    "eslint-plugin-vue": "^8.7.1"
   },
-  "peerDependencies": {
-    "@rushstack/eslint-patch": "^1.1.4",
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "prettier": "^2.5.0 || ^2.7.1"
+  },
+  "peerDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "prettier": "^2.5.0 || ^2.7.1",
+    "@rushstack/eslint-patch": "^1.1.0"
   },
   "license": "MIT"
 }
