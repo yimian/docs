@@ -30,6 +30,7 @@
   ],
   "author": "Yellin (huyelin@yimian.com.cn)",
   "dependencies": {
+    "@rushstack/eslint-patch": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "@vue/eslint-config-prettier": "^7.0.0",
@@ -38,14 +39,12 @@
     "eslint-plugin-vue": "^8.7.1"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.1.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "prettier": "^2.5.0 || ^2.7.1"
   },
   "peerDependencies": {
     "eslint": "^7.32.0 || ^8.2.0",
-    "prettier": "^2.5.0 || ^2.7.1",
-    "@rushstack/eslint-patch": "^1.1.0"
+    "prettier": "^2.5.0 || ^2.7.1"
   },
   "license": "MIT"
 }
