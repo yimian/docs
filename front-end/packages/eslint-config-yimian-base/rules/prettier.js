@@ -8,6 +8,12 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        semi: false,
+        useTabs: false,
+        tabWidth: 2,
+        printWidth: 80,
+        singleQuote: true,
+        trailingComma: 'all',
         endOfLine: 'auto',
       },
     ],
