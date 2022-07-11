@@ -640,6 +640,32 @@ if (condition) {
   function Engine(options) {
   }
   ```
+9. 不要使用含义不明的字面量值
+  ```javascript
+    // bad
+    if (user.status === 0) {
+      // ...
+    } else if (user.status === 1) {
+      // ...
+    }
+
+    // good
+    const USER_STATUS_MAP = {
+      enabled: 0,
+      disabled: 1,
+    }
+    if (user.status === USER_STATUS_MAP.enabled) {
+      // ...
+    } else if (user.status === USER_STATUS_MAP.disabled) {
+      // ...
+    }
+
+    // ts中可以使用枚举类型
+    enum USER_STATUS {
+      enabled = 0,
+      disabled = 1,
+    }
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -993,6 +1019,30 @@ const baz = Array.from(foo, bar)
   if (condition) {
     callFunc()
   }
+  ```
+
+**使用策略模式代替`switch`语句**
+
+  ```javascript
+  // bad
+  let value = ''
+  switch (condition) {
+    case 'a':
+      value = 'aValue'
+      break
+    case 'b':
+      value = 'bValue'
+      break
+    default:
+      value = ''
+  }
+
+  // good
+  let valueMap = {
+    a: 'aValue',
+    b: 'bValue',
+  }
+  let value = valueMap[condition]
   ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
