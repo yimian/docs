@@ -995,6 +995,30 @@ const baz = Array.from(foo, bar)
   }
   ```
 
+**使用策略模式代替`switch`语句**
+
+  ```javascript
+  // bad
+  let value = ''
+  switch (condition) {
+    case 'a':
+      value = 'aValue'
+      break
+    case 'b':
+      value = 'bValue'
+      break
+    default:
+      value = ''
+  }
+
+  // good
+  let valueMap = {
+    a: 'aValue',
+    b: 'bValue',
+  }
+  let value = valueMap[condition]
+  ```
+
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### undefined
