@@ -15,7 +15,7 @@ and [Commit Message Header](https://github.com/angular/angular/blob/main/CONTRIB
   │       └─⫸ Commit Scope: The scope could be anything specifying the place of the commit change.
   |                          For example components, ym-ui, core, deps, utils, locale, packaging, etc...
   │
-  └─⫸ Commit Type: build|chore|ci|docs|feat|fix|perf|refactor|revert|release|style|test|ui|wip
+  └─⫸ Commit Type: build|chore|ci|docs|feat|fix|perf|refactor|revert|release|style|test|ui|workflow|wip
 ```
 
 - `<type>` 和 `<subject>` 是必填字段, `(<scope>)` 字段是可选的.
@@ -27,7 +27,7 @@ and [Commit Message Header](https://github.com/angular/angular/blob/main/CONTRIB
 #### 1.1.1 [type-enum](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#type-enum):
 
 - build: 构建工具或外部依赖的改动
-- chore: 其他修改（不适用于已有 Type 的改动）
+- chore: 其他修改（不适用于已有 type 的改动）
 - ci: 与 CI（持续集成服务）有关的改动
 - docs: 文档更新（documentation）
 - feat: 新特性或功能（feature）
@@ -71,6 +71,7 @@ const Configuration: UserConfig = {
         'style',
         'test',
         'ui',
+        'workflow',
         'wip',
       ],
     ],
@@ -91,15 +92,15 @@ module.exports = Configuration
 
 ### 1.3 [Examples](https://github.com/vuejs/core/blob/main/.github/commit-convention.md#examples)
 
-- Appears under "Features" header, `compiler` subheader:
+- Appears under 'Features' header, `compiler` subheader:
 
 `feat(compiler): add 'comments' option`
 
-- Appears under "Bug Fixes" header, v-model subheader
+- Appears under 'Bug Fixes' header, v-model subheader
 
 `fix(v-model): handle events on blur`
 
-- Appears under "Performance Improvements" header, and under "Breaking Changes" with the breaking change explanation:
+- Appears under 'Performance Improvements' header, and under 'Breaking Changes' with the breaking change explanation:
 
 ```text
 perf(core): improve vdom diffing by removing 'foo' option
