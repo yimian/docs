@@ -30,7 +30,7 @@ PS: 上面的 `Vue` 代码指南相关文档，有些过时待后面更新
 3. [缩进](#缩进)
 4. [注释](#注释)
 5. [标点符号](#标点符号)
-6. [换行、空行](#换行、空行)
+6. [换行、空行](#换行空行)
 7. [留空](#留空)
 8. [括号](#括号)
 9. [比较运算符与相等](#比较运算符与相等)
@@ -105,7 +105,7 @@ Vue 项目：
 
     `<!--<div class="sell"></div>-->`
 
-  - JS 使用 `//`，且必**须独占一行**。
+  - JS 使用 `//`，且必**须独占一行**
 
     `// is current tab`
 
@@ -133,7 +133,7 @@ Vue 项目：
 
     // ...
 
-    return element;
+    return element
   }
 
   // good
@@ -145,7 +145,7 @@ Vue 项目：
 
     // ...
 
-    return element;
+    return element
   }
   ```
 
@@ -166,7 +166,7 @@ Vue 项目：
       p1,
       p2,
       p3,
-    };
+    }
   }
   ```
 
@@ -181,11 +181,11 @@ Vue 项目：
 
   ```javascript
   // bad
-  const x = "test";
+  const x = "test"
 
   // good
-  const y = 'foo';
-  const z = '<div id="test"></div>';
+  const y = 'foo'
+  const z = '<div id="test"></div>'
   ```
 
 3. [**逗号**](https://github.com/airbnb/javascript#commas) eslint: [comma-style](https://eslint.org/docs/rules/comma-style.html)
@@ -198,14 +198,14 @@ Vue 项目：
       once
     , upon
     , aTime
-  ];
+  ]
 
   // good
   const story = [
     once,
     upon,
     aTime,
-  ];
+  ]
 
   // bad
   const hero = {
@@ -213,7 +213,7 @@ Vue 项目：
     , lastName: 'Lovelace'
     , birthYear: 1815
     , superPower: 'computers'
-  };
+  }
 
   // good
   const hero = {
@@ -221,7 +221,7 @@ Vue 项目：
     lastName: 'Lovelace',
     birthYear: 1815,
     superPower: 'computers',
-  };
+  }
   ```
 
   - **添加额外的结尾逗号** eslint: [comma-dangle](https://eslint.org/docs/rules/comma-dangle.html)
@@ -233,14 +233,14 @@ Vue 项目：
   -   lastName: 'Nightingale'
   +   lastName: 'Nightingale',
   +   inventorOf: ['coxcomb chart', 'modern nursing']
-  };
+  }
 
   // good - git diff with trailing comma
   const hero = {
       firstName: 'Florence',
       lastName: 'Nightingale',
   +   inventorOf: ['coxcomb chart', 'modern nursing'],
-  };
+  }
   ```
 
   ```javascript
@@ -248,23 +248,23 @@ Vue 项目：
   const hero = {
     firstName: 'Dana',
     lastName: 'Scully'
-  };
+  }
 
   const heroes = [
     'Batman',
     'Superman'
-  ];
+  ]
 
   // good
   const hero = {
     firstName: 'Dana',
     lastName: 'Scully',
-  };
+  }
 
   const heroes = [
     'Batman',
     'Superman',
-  ];
+  ]
 
   // bad
   function createHero(
@@ -299,14 +299,14 @@ Vue 项目：
     firstName,
     lastName,
     inventorOf
-  );
+  )
 
   // good
   createHero(
     firstName,
     lastName,
     inventorOf,
-  );
+  )
 
   // good  (注意：逗号不应出现在使用了 ... 操作符的参数后面)
   createHero(
@@ -326,49 +326,49 @@ Vue 项目：
   ```javascript
   // bad
   if (test)
-    return false;
+    return false
 
   // bad
-  if (test) return false;
+  if (test) return false
 
   // good
   if (test) {
-    return false;
+    return false
   }
 
   // bad
-  function foo() { return false; }
+  function foo() { return false }
 
   // good
   function bar() {
-    return false;
+    return false
   }
 
   // bad
   if (test) {
-    thing1();
-    thing2();
+    thing1()
+    thing2()
   }
   else {
-    thing3();
+    thing3()
   }
 
   // good
   if (test) {
-    thing1();
-    thing2();
+    thing1()
+    thing2()
   } else {
-    thing3();
+    thing3()
   }
 
   // no-else-return
   // bad
   function dogs() {
     if (x) {
-      return x;
+      return x
     } else {
       if (y) {
-        return y;
+        return y
       }
     }
   }
@@ -376,20 +376,20 @@ Vue 项目：
   // good
   function foo() {
     if (x) {
-      return x;
+      return x
     }
 
-    return y;
+    return y
   }
 
   // good
   function cats() {
     if (x) {
-      return x;
+      return x
     }
 
     if (y) {
-      return y;
+      return y
     }
   }
 
@@ -397,27 +397,27 @@ Vue 项目：
   function dogs(x) {
     if (x) {
       if (z) {
-        return y;
+        return y
       }
     } else {
-      return z;
+      return z
     }
   }
 
   // best
   // 如果只有两个返回值且需要简单的判断，最好使用 `三元表达式` 代替 `if {} else {}`
   function foo() {
-    return x === 0 ? x : y;
+    return x === 0 ? x : y
   }
 
   // best
   // 当 x 为 [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 时，返回 y
   function foo() {
-    return x || y;
+    return x || y
   }
   ```
 
-2. 每行代码不超过 120 个字符
+2. 每行代码不超过 80 个字符
 3. 逻辑块之间加空行增加可读性
 4. 每个 `let`、`const` 只能声明一个变量，且**变量声明后需要空行**（当变量声明在代码块的最后一行时，则无需空行）
 5. **注释前需要加空行**（当注释在代码块的第一行时，则无需空行）
@@ -463,11 +463,11 @@ Vue 项目：
 
 ```javascript
 // bad
-if (condition) doSomething();
+if (condition) doSomething()
 
 // good
 if (condition) {
-  doSomething();
+  doSomething()
 }
 ```
 
@@ -516,62 +516,62 @@ if (condition) {
   // bad
   const foo = maybe1 > maybe2
     ? 'bar'
-    : value1 > value2 ? 'baz' : null;
+    : value1 > value2 ? 'baz' : null
 
   // split into 2 separated ternary expressions
-  const maybeNull = value1 > value2 ? 'baz' : null;
+  const maybeNull = value1 > value2 ? 'baz' : null
 
   // better
   const foo = maybe1 > maybe2
     ? 'bar'
-    : maybeNull;
+    : maybeNull
 
   // best
-  const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
+  const foo = maybe1 > maybe2 ? 'bar' : maybeNull
   ```
 
 4. **避免不必要的三元表达式**
 
   ```javascript
   // bad
-  const foo = a ? a : b;
-  const bar = c ? true : false;
-  const baz = c ? false : true;
+  const foo = a ? a : b
+  const bar = c ? true : false
+  const baz = c ? false : true
 
   // good
-  const foo = a || b;
-  const bar = !!c;
-  const baz = !c;
+  const foo = a || b
+  const bar = !!c
+  const baz = !c
   ```
 
 5. 用括号来组合操作符。只有当为标准的算术运算符（+, -, *, 和 /），并且它们的优先级显而易见时，才可以不用括号
 
   ```javascript
   // bad
-  const foo = a && b < 0 || c > 0 || d + 1 === 0;
+  const foo = a && b < 0 || c > 0 || d + 1 === 0
 
   // bad
-  const bar = a ** b - 5 % d;
+  const bar = a ** b - 5 % d
 
   // bad
   // 他人会陷入 (a || b) && c 的迷惑中
   if (a || b && c) {
-    return d;
+    return d
   }
 
   // good
-  const foo = (a && b < 0) || c > 0 || (d + 1 === 0);
+  const foo = (a && b < 0) || c > 0 || (d + 1 === 0)
 
   // good
-  const bar = (a ** b) - (5 % d);
+  const bar = (a ** b) - (5 % d)
 
   // good
   if (a || (b && c)) {
-    return d;
+    return d
   }
 
   // good
-  const bar = a + b / c * d;
+  const bar = a + b / c * d
   ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
@@ -582,8 +582,8 @@ if (condition) {
 2. **命名规范** : 使用大写字母和下划线来组合命名，下划线用以分割单词
 
   ```javascript
-  const MAX_COUNT = 10;
-  const URL = 'https://www.google.com/';
+  const MAX_COUNT = 10
+  const URL = 'https://www.google.com/'
   ```
 
 3. Android、iOS
@@ -599,12 +599,12 @@ if (condition) {
   // bad
   let hangModules = [],
       missModules = [],
-      visited = {};
+      visited = {}
 
   // good
-  let hangModules = [];
-  let missModules = [];
-  let visited = {};
+  let hangModules = []
+  let missModules = []
+  let visited = {}
   ```
 
 3. 把 `const`s 和 `let`s 分组
@@ -613,21 +613,21 @@ if (condition) {
   // bad
   let i, len, dragonball,
       items = getItems(),
-      goSportsTeam = true;
+      goSportsTeam = true
 
   // bad
-  let i;
-  const items = getItems();
-  let dragonball;
-  const goSportsTeam = true;
-  let len;
+  let i
+  const items = getItems()
+  let dragonball
+  const goSportsTeam = true
+  let len
 
   // good
-  const goSportsTeam = true;
-  const items = getItems();
-  let dragonball;
-  let i;
-  let length;
+  const goSportsTeam = true
+  const items = getItems()
+  let dragonball
+  let i
+  let length
   ```
 
 4. 构造函数，第一个字母大写
@@ -665,12 +665,12 @@ if (condition) {
   ```javascript
   // 是否可编辑
   function canEdit() {
-    return true;
+    return true
   }
 
   // 获取标题
   function getTitle() {
-    return this.name;
+    return this.name
   }
   ```
 
@@ -679,13 +679,13 @@ if (condition) {
 ```javascript
 // bad
 function concatenateAll() {
-	const args = Array.prototype.slice.call(arguments);
-	return args.join('');
+  const args = Array.prototype.slice.call(arguments)
+  return args.join('')
 }
 
 // good
 function concatenateAll(...args) {
-	return args.join('');
+  return args.join('')
 }
 ```
 
@@ -695,16 +695,16 @@ function concatenateAll(...args) {
 // bad
 if (currentUser) {
   function test() {
-    console.log('Nope.');
+    console.log('Nope.')
   }
 }
 
 // good
-let test;
+let test
 if (currentUser) {
   test = () => {
-    console.log('Yup.');
-  };
+    console.log('Yup.')
+  }
 }
 ```
 
@@ -718,7 +718,7 @@ function handleThings(opts = {}) {
 }
 ```
 
-- 带默认值的形参应该往后方，这里跟ts的可选形参的位置规范是一样的
+- 带默认值的形参应该往后方，这里跟 TS 的可选形参的位置规范是一样的
 
 ```javascript
 // bad
@@ -745,38 +745,38 @@ function handleThings(name: NameType, opts?: OptionsType) {
 
   ```javascript
   // good
-  const { data } = this;
+  const { data } = this
 
   // bad
   function getFullName(user) {
-    const firstName = user.firstName;
-    const lastName = user.lastName;
+    const firstName = user.firstName
+    const lastName = user.lastName
 
-    return `${firstName} ${lastName}`;
+    return `${firstName} ${lastName}`
   }
 
   // good
   function getFullName(user) {
-    const { firstName, lastName } = user;
-    return `${firstName} ${lastName}`;
+    const { firstName, lastName } = user
+    return `${firstName} ${lastName}`
   }
 
-	// 形参直接通过结构赋值提取属性
+  // 形参直接通过结构赋值提取属性
   // best
   function getFullName({ firstName, lastName }) {
-    return `${firstName} ${lastName}`;
+    return `${firstName} ${lastName}`
   }
 
 
-	// 使用解构赋值从数组中提取元素
-  const arr = [1, 2, 3, 4];
+  // 使用解构赋值从数组中提取元素
+  const arr = [1, 2, 3, 4]
 
   // bad
-  const first = arr[0];
-  const second = arr[1];
+  const first = arr[0]
+  const second = arr[1]
 
   // good
-  const [first, second] = arr;
+  const [first, second] = arr
   ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
@@ -787,56 +787,56 @@ function handleThings(name: NameType, opts?: OptionsType) {
 
   ```javascript
   // bad
-  const a = new Object();
+  const a = new Object()
 
   // good
-  const a = {};
+  const a = {}
   ```
 
 2. **当使用动态属性名创建对象时，请使用对象计算属性名来进行创建**
 
   ```javascript
   function getKey(k) {
-    return `a key named ${k}`;
+    return `a key named ${k}`
   }
 
   // bad
   const obj = {
     id: 5,
     name: 'San Francisco',
-  };
-  obj[getKey('enabled')] = true;
+  }
+  obj[getKey('enabled')] = true
 
   // good
   const obj = {
     id: 5,
     name: 'San Francisco',
     [getKey('enabled')]: true,
-  };
+  }
   ```
 
 3. **使用对象方法、属性的简写方式**
 
   ```javascript
-  const job = 'FrontEnd';
+  const job = 'FrontEnd'
 
   // bad
   const item = {
     job: job,
     value: 1,
     addValue: function (val) {
-      return item.value + val;
+      return item.value + val
     },
-  };
+  }
 
   // good
   const item = {
     job,
     value: 1,
     addValue (val) {
-      return item.value + val;
+      return item.value + val
     },
-  };
+  }
   ```
 
 4. **只对非法标识符的属性使用引号**
@@ -850,60 +850,58 @@ function handleThings(name: NameType, opts?: OptionsType) {
 
   ```javascript
   // bad
-  const items = new Array();
+  const items = new Array()
 
   // good
-  const items = [];
+  const items = []
   ```
 
 2. 向数组中添加元素时，使用 push 方法
 
   ```javascript
-  const items = [];
+  const items = []
 
   // bad
-  items[items.length] = 'test';
+  items[items.length] = 'test'
 
   // good
-  items.push('test');
+  items.push('test')
   ```
 
 3. 使用展开运算符 `...` 复制数组
 4. 把一个可迭代的对象转换为数组时，使用展开运算符 `...` 而不是 `Array.from`
 
   ```javascript
-  const foo = document.querySelectorAll('.foo');
+  const foo = document.querySelectorAll('.foo')
 
   // bad
-  const nodes = Array.from(foo);
+  const nodes = Array.from(foo)
 
   // best
-  const nodes = [...foo];
+  const nodes = [...foo]
   ```
 
-5. 利用`Array.from`转换类数组对象，注意区分可迭代对象和类数组对象
+5. 利用 `Array.from` 转换类数组对象，注意区分可迭代对象和类数组对象
 
 ```javascript
-const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
+const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 }
 
 // bad
-const arr = Array.prototype.slice.call(arrLike);
+const arr = Array.prototype.slice.call(arrLike)
 
 // good
-const arr = Array.from(arrLike);
+const arr = Array.from(arrLike)
 ```
 
-6. 利用`Array.from`进行mapping，而不是`...`，避免生成中间值
+6. 利用 `Array.from` 进行 mapping，而不是 `...`，避免生成中间值
 
 ```javascript
 // bad
-const baz = [...foo].map(bar);
+const baz = [...foo].map(bar)
 
 // good
-const baz = Array.from(foo, bar);
+const baz = Array.from(foo, bar)
 ```
-
-
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -912,22 +910,22 @@ const baz = Array.from(foo, bar);
 不要使用 `iterators`，建议使用 JS 更高优先级的函数代替 `for-in` 或 `for-of` 循环，除非迫不得已
 
   ```javascript
-  const numbers = [1, 2, 3, 4, 5];
+  const numbers = [1, 2, 3, 4, 5]
 
   // bad
-  let sum = 0;
+  let sum = 0
 
   for (let num of numbers) {
-    sum += num;
+    sum += num
   }
 
   // good
-  let sum = 0;
+  let sum = 0
 
-  numbers.forEach(num => sum += num);
+  numbers.forEach(num => sum += num)
 
   // better
-  const sum = numbers.reduce((total, num) => total + num, 0);
+  const sum = numbers.reduce((total, num) => total + num, 0)
   ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
@@ -937,19 +935,19 @@ const baz = Array.from(foo, bar);
   ```javascript
   // bad
   if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
-    thing1();
+    thing1()
   }
 
   // bad
   if (foo === 123 &&
     bar === 'abc') {
-    thing1();
+    thing1()
   }
 
   // bad
   if (foo === 123
     && bar === 'abc') {
-    thing1();
+    thing1()
   }
 
   // bad
@@ -957,7 +955,7 @@ const baz = Array.from(foo, bar);
     foo === 123 &&
     bar === 'abc'
   ) {
-    thing1();
+    thing1()
   }
 
   // good
@@ -965,7 +963,7 @@ const baz = Array.from(foo, bar);
     foo === 123
     && bar === 'abc'
   ) {
-    thing1();
+    thing1()
   }
 
   // good
@@ -974,12 +972,12 @@ const baz = Array.from(foo, bar);
     && doesItLookGoodWhenItBecomesThatLong()
     && isThisReallyHappening()
   ) {
-    thing1();
+    thing1()
   }
 
   // good
   if (foo === 123 && bar === 'abc') {
-    thing1();
+    thing1()
   }
   ```
 
@@ -987,13 +985,13 @@ const baz = Array.from(foo, bar);
 
   ```javascript
   // bad
-  if (condition) callFunc();
+  if (condition) callFunc()
   if (condition)
-    callFunc();
+    callFunc()
 
   // good
   if (condition) {
-    callFunc();
+    callFunc()
   }
   ```
 
@@ -1021,9 +1019,9 @@ const baz = Array.from(foo, bar);
 
 ### 安全问题
 
-- 不要使用eval()函数执行string命令
-- 减少直接使用对html String解析的操作
-- URL尽量都先encode
+- 不要使用 `eval()` 函数执行 string 命令
+- 减少直接使用对 HTML String 解析的操作
+- URL 尽量都先 encode
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 ​
@@ -1035,18 +1033,18 @@ const baz = Array.from(foo, bar);
 
 ```javascript
 // bad
-import foo from 'foo';
+import foo from 'foo'
 // … some other imports … //
-import { named1, named2 } from 'foo';
+import { named1, named2 } from 'foo'
 
 // good
-import foo, { named1, named2 } from 'foo';
+import foo, { named1, named2 } from 'foo'
 
 // good
 import foo, {
   named1,
   named2,
-} from 'foo';
+} from 'foo'
 ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
@@ -1080,7 +1078,7 @@ import foo, {
 
   1. class 应以功能或内容命名，不以表现形式命名
   2. class 与 id 单词字母小写，多个单词组成时，采用中划线 - 分隔
-  3. 省略 "0" 值后面的单位，不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
+  3. 省略 '0' 值后面的单位，不要在 0 值后面使用单位，除非有值。用 `margin: 0;` 代替 `margin: 0px;`
   4. 代码缩进与格式: 每个 CSS 属性声明后都要加分号，在紧跟属性名的冒号后使用一个空格
   5. 减少选择器的长度（深度）
   6. 样式名不能包含 `ad`、`guanggao`、`ads`、`gg` 等是广告含义的关键词，避免元素被网页拓展、插件屏蔽
@@ -1220,10 +1218,10 @@ import foo, {
   <script src="http://www.w3cschool.cn/statics/js/autotrack.js"></script>
   ```
 
-  14. `,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格
+  14. **`,` 和 `;` 前不允许有空格。如果不位于行尾，`,` 和 `;` 后必须跟一个空格**
   15. 在运算符处换行时，建议把运算符放在新行的**行首**`'operator-linebreak': ['error', 'before']`，但考虑到目前 [Prettier](https://prettier.io/) 的限制，运算符可以放在句尾，详见：
-        1. [Placing operators at the beginning of lines #3806](https://github.com/prettier/prettier/issues/3806)
-        2. [JS: Break lines before binary operators (fixes #3806) #7111](https://github.com/prettier/prettier/pull/7111)
+      1. [Placing operators at the beginning of lines #3806](https://github.com/prettier/prettier/issues/3806)
+      2. [JS: Break lines before binary operators (fixes #3806) #7111](https://github.com/prettier/prettier/pull/7111)
   16. 部分 VSCode eslint 配置[详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/.eslintrc.js)
   17. 部分工具函数 [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/util.js)
   18. 部分 IE Polyfill [详见](https://github.com/yimian/vue-cli-plugin-basis/blob/master/generator/template/src/utils/compatible-ie.js)
