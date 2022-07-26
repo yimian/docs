@@ -29,7 +29,7 @@ npm add --dev @ym/eslint-config-yimian-base @rushstack/eslint-patch
 
 - `@rushstack/eslint-patch`：为了确保配置文件可以在eslint的一些已知限制下更好的工作，依赖该插件配合使用，且该插件也可以使您不需要安装太多的依赖。
 
-安装前请**登录**`nexus`[私服](https://ones.ai/wiki/#/team/49egF9Px/space/CAKmZRGr/page/FUMe6Rvo)，或直接在前端项目中添加`.npmrc`文件，增加相关配置，具体配置细节请看公司私服使用指南
+安装前请**登录**`nexus`私服，或直接在前端项目中添加`.npmrc`文件，增加相关配置，具体配置细节请看公司私服使用指南
 
 **此外，还需要确保已经安装eslint和prettier**
 
