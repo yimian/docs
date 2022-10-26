@@ -1,0 +1,47 @@
+{
+  "name": "@ym/eslint-config-yimian-base",
+  "version": "1.1.0",
+  "description": "Yimian's base Ts\\Vue3\\Js ESLint config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./rules/best-practices": "./rules/best-practices.js",
+    "./rules/ts": "./rules/ts.js",
+    "./rules/vue": "./rules/vue.js",
+    "./rules/style": "./rules/style.js",
+    "./rules/errors": "./rules/errors.js",
+    "./rules/imports": "./rules/imports.js",
+    "./rules/variables": "./rules/variables.js",
+    "./rules/prettier": "./rules/prettier.js",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "yimian",
+    "eslint",
+    "eslintconfig",
+    "config",
+    "javascript",
+    "typescript",
+    "vue3",
+    "styleguide"
+  ],
+  "author": "Yellin (huyelin@yimian.com.cn)",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-vue": "^8.7.1"
+  },
+  "devDependencies": {
+    "typescript": "~4.6.3",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "prettier": "^2.5.0 || ^2.7.1",
+    "@rushstack/eslint-patch": "^1.1.0"
+  },
+  "license": "MIT"
+}

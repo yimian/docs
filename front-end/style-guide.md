@@ -640,6 +640,32 @@ if (condition) {
   function Engine(options) {
   }
   ```
+9. 不要使用含义不明的字面量值
+  ```javascript
+    // bad
+    if (user.status === 0) {
+      // ...
+    } else if (user.status === 1) {
+      // ...
+    }
+
+    // good
+    const USER_STATUS_MAP = {
+      enabled: 0,
+      disabled: 1,
+    }
+    if (user.status === USER_STATUS_MAP.enabled) {
+      // ...
+    } else if (user.status === USER_STATUS_MAP.disabled) {
+      // ...
+    }
+
+    // ts中可以使用枚举类型
+    enum USER_STATUS {
+      enabled = 0,
+      disabled = 1,
+    }
+  ```
 
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
@@ -995,6 +1021,30 @@ const baz = Array.from(foo, bar)
   }
   ```
 
+**使用策略模式代替`switch`语句**
+
+  ```javascript
+  // bad
+  let value = ''
+  switch (condition) {
+    case 'a':
+      value = 'aValue'
+      break
+    case 'b':
+      value = 'bValue'
+      break
+    default:
+      value = ''
+  }
+
+  // good
+  let valueMap = {
+    a: 'aValue',
+    b: 'bValue',
+  }
+  let value = valueMap[condition]
+  ```
+
 **[⬆ back to top](#page_with_curl-table-of-contents)**
 
 ### undefined
@@ -1157,7 +1207,7 @@ import foo, {
     **只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性**
 5. [紧密耦合的组件名](https://cn.vuejs.org/v2/style-guide/#%E7%B4%A7%E5%AF%86%E8%80%A6%E5%90%88%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
     和父组件紧密耦合的子组件应该以父组件名作为前缀命名
-6. [模板中的组件名大小写](https://cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
+6. [模板中的组件名大小写](https://cn.vuejs.org/guide/components/registration.html#component-name-casing)、[v2](https://v2.cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
     我们日常项目中基本不会使用 DOM 模板，这里规定在单文件组件和字符串模板中**组件名总是使用 PascalCase**
     对于绝大多数项目来说，在单文件组件和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的
 7. [完整单词的组件名](https://cn.vuejs.org/v2/style-guide/#%E5%AE%8C%E6%95%B4%E5%8D%95%E8%AF%8D%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
