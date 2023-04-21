@@ -4,7 +4,6 @@
 
 ***这里基于已有规范做一些特殊说明、修改、强调和归纳提炼，文档着重于 JavaScript/[TypeScript](https://www.typescriptlang.org/)，更多信息请查看下面的规范***
 
-### [ESLint Configuration Files](https://github.com/yimian/docs/blob/1.0.0/front-end/scripts/.eslintrc.cjs)
 
 #### 参考:
 
@@ -23,11 +22,13 @@ PS: 上面的 `Vue` 代码指南相关文档，有些过时待后面更新
 
 ------
 
+## [ESLint Configuration Files](https://github.com/yimian/docs/blob/1.0.0/front-end/scripts/.eslintrc.cjs)
+
 ## :page_with_curl: Table of Contents
 
 - [前端代码规范](#前端代码规范)
-    - [ESLint Configuration Files](#eslint-configuration-files)
       - [参考:](#参考)
+  - [ESLint Configuration Files](#eslint-configuration-files)
   - [:page\_with\_curl: Table of Contents](#page_with_curl-table-of-contents)
     - [命名规范](#命名规范)
     - [基本原则](#基本原则)
