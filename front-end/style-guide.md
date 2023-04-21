@@ -25,34 +25,38 @@ PS: 上面的 `Vue` 代码指南相关文档，有些过时待后面更新
 
 ## :page_with_curl: Table of Contents
 
-1. [命名规范](#命名规范)
-2. [基本原则](#基本原则)
-3. [缩进](#缩进)
-4. [注释](#注释)
-5. [标点符号](#标点符号)
-6. [换行、空行](#换行空行)
-7. [留空](#留空)
-8. [括号](#括号)
-9. [比较运算符与相等](#比较运算符与相等)
-10. [常量](#常量)
-11. [变量](#变量)
-12. [函数](#函数)
-13. [解构赋值](#解构赋值)
-14. [对象](#对象)
-15. [数组](#数组)
-16. [迭代器](#迭代器)
-17. [控制语句 Control Statements](#控制语句-Control-Statements)
-18. [undefined](#undefined)
-19. [安全问题](#安全问题)
-20. [模块](#模块)
-21. [HTML](#HTML)
-22. [CSS](#CSS)
-23. [组件中的 HTML 格式](#组件中的-HTML-格式)
-24. [引入 CSS 和 JavaScript 文件](#引入-CSS-和-JavaScript-文件)
-25. [Vue 组件命名和结构](#Vue-组件命名和结构)
-26. [项目结构](#项目结构)
-27. [PS](#PS)
-28. [常用模块命名](#常用模块命名)
+- [前端代码规范](#前端代码规范)
+    - [ESLint Configuration Files](#eslint-configuration-files)
+      - [参考:](#参考)
+  - [:page\_with\_curl: Table of Contents](#page_with_curl-table-of-contents)
+    - [命名规范](#命名规范)
+    - [基本原则](#基本原则)
+    - [缩进](#缩进)
+    - [注释](#注释)
+    - [标点符号](#标点符号)
+    - [换行、空行](#换行空行)
+    - [留空](#留空)
+    - [括号](#括号)
+    - [比较运算符与相等](#比较运算符与相等)
+    - [常量](#常量)
+    - [变量](#变量)
+    - [函数](#函数)
+    - [解构赋值](#解构赋值)
+    - [对象](#对象)
+    - [数组](#数组)
+    - [迭代器](#迭代器)
+    - [控制语句 Control Statements](#控制语句-control-statements)
+    - [undefined](#undefined)
+    - [安全问题](#安全问题)
+    - [模块](#模块)
+    - [HTML](#html)
+    - [CSS](#css)
+    - [组件中的 HTML 格式](#组件中的-html-格式)
+    - [引入 CSS 和 JavaScript 文件](#引入-css-和-javascript-文件)
+    - [Vue 组件命名和结构](#vue-组件命名和结构)
+    - [项目结构](#项目结构)
+    - [PS](#ps)
+    - [常用模块命名](#常用模块命名)
 
 ### 命名规范
 
@@ -1176,7 +1180,7 @@ import foo, {
 
 ### Vue 组件命名和结构
 
-1. 基本遵循[风格指南](<https://cn.vuejs.org/v2/style-guide/#%E7%BB%84%E4%BB%B6%E6%96%87%E4%BB%B6%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90>)
+1. 基本遵循[风格指南](https://v2.cn.vuejs.org/v2/style-guide/)，这里是 v2 版的风格指南，v3 版的可参考[官方文档示例](https://cn.vuejs.org/guide/essentials/template-syntax.html)
 
 2. 组件的命名需遵从以下原则：
 
@@ -1208,8 +1212,10 @@ import foo, {
 5. [紧密耦合的组件名](https://cn.vuejs.org/v2/style-guide/#%E7%B4%A7%E5%AF%86%E8%80%A6%E5%90%88%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
     和父组件紧密耦合的子组件应该以父组件名作为前缀命名
 6. [模板中的组件名大小写](https://cn.vuejs.org/guide/components/registration.html#component-name-casing)、[v2](https://v2.cn.vuejs.org/v2/style-guide/#%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
-    我们日常项目中基本不会使用 DOM 模板，这里规定在单文件组件和字符串模板中**组件名总是使用 PascalCase**
-    对于绝大多数项目来说，在单文件组件和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的
+  - `PascalCase` 是合法的 JavaScript 标识符。这使得在 JavaScript 中导入和注册组件都很容易，同时 IDE 也能提供较好的自动补全
+  - `<PascalCase />` 在模板中更明显地表明了这是一个 Vue 组件，而不是原生 HTML 元素。同时也能够将 Vue 组件和自定义元素 (web components) 区分开来
+  - 我们日常项目中基本不会使用 DOM 模板，这里规定在单文件组件和字符串模板中**组件名总是使用 PascalCase**
+  - 对于绝大多数项目来说，在单文件组件和字符串模板中组件名应该总是 `PascalCase` 的，但是在 DOM 模板中总是 `kebab-case` 的
 7. [完整单词的组件名](https://cn.vuejs.org/v2/style-guide/#%E5%AE%8C%E6%95%B4%E5%8D%95%E8%AF%8D%E7%9A%84%E7%BB%84%E4%BB%B6%E5%90%8D%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
     **组件名应该倾向于完整单词而不是缩写**
 8. [多个 attribute 的元素](https://cn.vuejs.org/v2/style-guide/#%E5%A4%9A%E4%B8%AA-attribute-%E7%9A%84%E5%85%83%E7%B4%A0%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90)
